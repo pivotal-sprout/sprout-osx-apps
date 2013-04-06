@@ -1,9 +1,9 @@
 sprout
-===============
+======
 
-A collection of chef cookbooks to build an OS X Mountain Lion workstation
+Chef cookbooks to configure an OS X Mountain Lion workstation. Successor to pivotal_workstation.
 
-e.g.
+Cookbooks
+-------
 
-sprout-legacy
-sprout-ox-apps
+sprout-osx-apps - Commonly used OS X Mountain Lion applications
