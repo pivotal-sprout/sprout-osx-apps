@@ -1,0 +1,8 @@
+name             'sprout-osx-settings'
+maintainer       'Pivotal Labs'
+maintainer_email 'accounts@pivotallabs.com'
+license          'MIT'
+description      'Recipes to configure various aspects of OS X'
+long_description 'Recipes to configure various aspects of OS X'
+version          '0.1.0'
+supports         'mac_os_x'
