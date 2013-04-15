@@ -1,5 +1,3 @@
-node.default['function_keys']['use_function_keys_as_function_keys'] = true
-
 as_fn_keys = node.default['function_keys']['use_function_keys_as_function_keys'] ? "0" : "1"
 
 # The following won't take effect until the person logs out & logs back in again.
