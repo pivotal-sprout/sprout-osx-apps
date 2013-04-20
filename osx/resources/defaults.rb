@@ -4,7 +4,7 @@ A resource/provider to call to MacOS's plist 'defaults' command line tool.
 
 Syntax:
 
-pivotal_workstation_defaults "set key repeat rate" do
+osx_defaults "set key repeat rate" do
   domain "/Users/#{WS_USER}/Library/Preferences/.GlobalPreferences"
   key "KeyRepeat"
   integer 2

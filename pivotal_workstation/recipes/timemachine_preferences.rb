@@ -1,4 +1,4 @@
-pivotal_workstation_defaults "TimeMachine should NOT ask to use every new disk"   do
+osx_defaults "TimeMachine should NOT ask to use every new disk"   do
   domain 'com.apple.TimeMachine'
   key 'DoNotOfferNewDisksForBackup'
   boolean true

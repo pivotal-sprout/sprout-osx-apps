@@ -2,7 +2,7 @@ as_fn_keys = node.default['function_keys']['use_function_keys_as_function_keys']
 
 # The following won't take effect until the person logs out & logs back in again.
 # THE BELT
-pivotal_workstation_defaults "Turn #{as_fn_keys ? "on" : "off" } function-keys-work-as-function keys" do
+osx_defaults "Turn #{as_fn_keys ? "on" : "off" } function-keys-work-as-function keys" do
   domain '.GlobalPreferences'
   key 'com.apple.keyboard.fnState'
   boolean node.default['function_keys']['use_function_keys_as_function_keys']

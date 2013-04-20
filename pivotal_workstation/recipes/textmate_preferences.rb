@@ -1,12 +1,12 @@
 include_recipe "pivotal_workstation::textmate"
 
-pivotal_workstation_defaults "set save on losing focus" do
+osx_defaults "set save on losing focus" do
   domain '~/Library/Preferences/com.macromates.textmate'
   key 'OakSaveAllOnDeactivate'
   boolean true
 end
 
-pivotal_workstation_defaults "show line numbers" do
+osx_defaults "show line numbers" do
   domain '~/Library/Preferences/com.macromates.textmate'
   key 'OakTextViewLineNumbersEnabled'
   boolean true
