@@ -8,4 +8,8 @@ Chef cookbooks to configure an OS X Mountain Lion workstation. Successor to pivo
 Cookbooks
 -------
 
-sprout-osx-apps - Commonly used OS X Mountain Lion applications
+| Cookbook            | Description                                            |
+| ------------------- | -------------------------------------------------------|
+| sprout-osx-apps     | Commonly used OS X Mountain Lion applications          |
+| sprout-osx-settings | Various settings & preferences for OS X Mountain Lion. |
+| pivotal_workstation | DEPRECATED in favor of sprout-*                        |
