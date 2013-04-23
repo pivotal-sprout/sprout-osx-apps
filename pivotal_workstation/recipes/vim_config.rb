@@ -2,7 +2,7 @@
 # https://github.com/Casecommons/casecommons_workstation
 
 include_recipe "pivotal_workstation::vim"
-include_recipe "pivotal_workstation::ack"
+include_recipe "sprout-osx-apps::ack"
 include_recipe "pivotal_workstation::git"
 include_recipe "pivotal_workstation::tmux"
 
