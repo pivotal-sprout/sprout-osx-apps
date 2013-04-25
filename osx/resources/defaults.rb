@@ -5,7 +5,7 @@ A resource/provider to call to MacOS's plist 'defaults' command line tool.
 Syntax:
 
 osx_defaults "set key repeat rate" do
-  domain "/Users/#{WS_USER}/Library/Preferences/.GlobalPreferences"
+  domain "/Users/#{node['current_user']}/Library/Preferences/.GlobalPreferences"
   key "KeyRepeat"
   integer 2
 end

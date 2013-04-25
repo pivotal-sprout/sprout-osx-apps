@@ -1,3 +1,3 @@
-include_recipe "pivotal_workstation::xquartz"
+include_recipe "sprout-osx-apps::xquartz"
 
 brew "qt"

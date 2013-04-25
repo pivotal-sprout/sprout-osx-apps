@@ -5,5 +5,5 @@ dmg_package "Firefox Aurora" do
   app "FirefoxAurora"
   source "https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-aurora/firefox-21.0a2.en-US.mac.dmg"
   action :install
-  owner WS_USER
+  owner node['current_user']
 end

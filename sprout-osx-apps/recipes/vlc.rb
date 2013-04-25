@@ -7,5 +7,5 @@ dmg_package "VLC" do
   source "http://download.videolan.org/vlc/#{vlc_version}/macosx/vlc-#{vlc_version}.dmg"
   checksum vlc_checksum
   action :install
-  owner WS_USER
+  owner node['current_user']
 end

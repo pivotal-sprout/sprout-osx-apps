@@ -1,6 +1,6 @@
-include_recipe "pivotal_workstation::ack"
+include_recipe "sprout-osx-apps::ack"
 include_recipe "pivotal_workstation::tmux"
-include_recipe "pivotal_workstation::xquartz"
+include_recipe "sprout-osx-apps::xquartz"
 
 brew "watch"
 brew "ssh-copy-id"
