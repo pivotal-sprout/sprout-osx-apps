@@ -1,7 +1,7 @@
 unless File.exists?("/Applications/iStat Menus.app")
 
   remote_file "#{Chef::Config[:file_cache_path]}/istatmenus.zip" do
-    source "http://s3.amazonaws.com/bjango/files/istatmenus4/istatmenus4.02.zip"
+    source "http://s3.amazonaws.com/bjango/files/istatmenus4/istatmenus4.03.zip"
     owner node['current_user']
   end
 
