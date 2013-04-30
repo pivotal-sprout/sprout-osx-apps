@@ -2,17 +2,17 @@ unless File.exists?("/Applications/Kaleidoscope.app")
 
   remote_file "#{Chef::Config[:file_cache_path]}/kaleidoscope2.tar.gz" do
     source "https://updates.blackpixel.com/latest-beta?app=ks"
-    owner WS_USER
+    owner node['current_user']
   end
 
   execute "unzip Kaleidoscope" do
     command "tar -xzf #{Chef::Config[:file_cache_path]}/kaleidoscope2.tar.gz -C #{Chef::Config[:file_cache_path]}/"
-    user WS_USER
+    user node['current_user']
   end
 
   execute "copy Kaleidoscope to /Applications" do
     command "mv #{Chef::Config[:file_cache_path]}/Kaleidoscope.app #{Regexp.escape("/Applications/Kaleidoscope.app")}"
-    user WS_USER
+    user node['current_user']
     group "admin"
   end
 

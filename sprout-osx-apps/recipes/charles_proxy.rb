@@ -12,20 +12,20 @@
 
 remote_file "#{Chef::Config[:file_cache_path]}/charles_proxy.zip" do
   source node["charles_proxy"]["download_uri"]
-  owner WS_USER
+  owner node['current_user']
   checksum node["charles_proxy"]["sha"]
   not_if { File.exists?("#{Chef::Config[:file_cache_path]}/charles_proxy.zip") }
 end
 
 execute "unzip charles_proxy" do
   command "unzip #{Chef::Config[:file_cache_path]}/charles_proxy.zip -d #{Chef::Config[:file_cache_path]}/"
-  user WS_USER
+  user node['current_user']
   not_if { File.exists?("#{Chef::Config[:file_cache_path]}/Charles.app") }
 end
 
 execute "copy charles_proxy to /Applications" do
   command "mv #{Chef::Config[:file_cache_path]}/Charles.app #{Regexp.escape(node["charles_proxy"]["app_path"])}"
-  user WS_USER
+  user node['current_user']
   group "admin"
   not_if { File.exists?(node["charles_proxy"]["app_path"]) }
 end
@@ -33,7 +33,7 @@ end
 template node["charles_proxy"]["config_path"] do
   source "com.xk72.charles.config.erb"
   cookbook 'pivotal_workstation'
-  owner WS_USER
+  owner node['current_user']
   mode "0777"
   not_if { File.exists?(node["charles_proxy"]["config_path"]) || node["charles_proxy"]["license_key"] == nil || node["charles_proxy"]["license_name"] == nil }
 end

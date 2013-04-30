@@ -2,12 +2,12 @@ unless File.exists?(node["freeruler_app_path"])
 
   remote_file "#{Chef::Config[:file_cache_path]}/FreeRuler1.7b5.zip" do
     source node["freeruler_download_uri"]
-    owner WS_USER
+    owner node['current_user']
   end
 
   execute "unzip FreeRuler to /Applications" do
     command "unzip -o #{Chef::Config[:file_cache_path]}/FreeRuler1.7b5.zip -x __MACOSX* -d /Applications/"
-    user WS_USER
+    user node['current_user']
     # This is required to unzip into Applications
     group "admin"
   end

@@ -2,17 +2,17 @@ unless File.exists?("/Applications/iStat Menus.app")
 
   remote_file "#{Chef::Config[:file_cache_path]}/istatmenus.zip" do
     source "http://s3.amazonaws.com/bjango/files/istatmenus4/istatmenus4.02.zip"
-    owner WS_USER
+    owner node['current_user']
   end
 
   execute "unzip iStat Menus" do
     command "unzip #{Chef::Config[:file_cache_path]}/istatmenus.zip -d #{Chef::Config[:file_cache_path]}/"
-    user WS_USER
+    user node['current_user']
   end
 
   execute "copy iStat Menus to /Applications" do
     command "mv #{Regexp.escape("#{Chef::Config[:file_cache_path]}/iStat Menus.app")} #{Regexp.escape("/Applications/iStat Menus.app")}"
-    user WS_USER
+    user node['current_user']
     group "admin"
   end
 

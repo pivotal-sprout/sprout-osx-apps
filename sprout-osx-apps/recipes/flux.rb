@@ -7,7 +7,7 @@ end
 
 execute "unzip flux" do
   command "unzip -q #{Chef::Config[:file_cache_path]}/Flux.zip Flux.app/* -d /Applications/"
-  user WS_USER
+  user node['current_user']
   group "admin"
   not_if { File.exists?("/Applications/Flux.app") }
 end
