@@ -12,12 +12,12 @@ unless File.exists?("/Applications/TextMate.app")
   remote_file "#{Chef::Config[:file_cache_path]}/textmate.zip" do
     source node["textmate"]["url"]
     checksum node["textmate"]["shasum"]
-    owner WS_USER
+    owner node['current_user']
   end
 
   execute "extract text mate to /Applications" do
     command "unzip -o #{Chef::Config[:file_cache_path]}/textmate.zip -x __MACOSX* -d /Applications/"
-    user WS_USER
+    user node['current_user']
 
     # This is required to unzip into Applications
     group "admin"
