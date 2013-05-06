@@ -1,5 +1,2 @@
-osx_defaults "Disable natural scrolling" do
-  domain "/Users/#{WS_USER}/Library/Preferences/.GlobalPreferences"
-  key "com.apple.swipescrolldirection"
-  boolean false
-end
+Chef::Log.warn "Please use sprout-osx-apps::#{File.basename(__FILE__, '.rb')}"
+include_recipe "sprout-osx-apps::#{File.basename(__FILE__, '.rb')}"
