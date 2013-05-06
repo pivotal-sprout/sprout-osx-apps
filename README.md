@@ -12,5 +12,6 @@ Cookbooks
 | Cookbook            | Description                                            |
 | ------------------- | -------------------------------------------------------|
 | sprout-osx-apps     | Commonly used OS X Mountain Lion applications          |
-| sprout-osx-settings | Various settings & preferences for OS X Mountain Lion. |
+| sprout-osx-settings | Various settings & preferences for OS X Mountain Lion  |
+| sprout-textmate     | TextMate preferences, plugins, and configs             |
 | pivotal_workstation | DEPRECATED in favor of sprout-*                        |
