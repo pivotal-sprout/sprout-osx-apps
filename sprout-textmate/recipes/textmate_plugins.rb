@@ -1,7 +1,8 @@
-run_unless_marker_file_exists("textmate_plugins_0") do
+homedir = node['etc']['passwd'][node['current_user']]['dir']
+
+unless File.exists?("#{homedir}/Library/Application Support/TextMate/PlugIns/ProjectPlus.tmplugin") do
   ["curl -o #{Chef::Config[:file_cache_path]}/projectplus.dmg http://ciaranwal.sh/projectplus-files/ProjectPlus-1.3.dmg",
    "hdiutil mount #{Chef::Config[:file_cache_path]}/projectplus.dmg",
-   "rm -rf '#{node['etc']['passwd'][node['current_user']]['dir']}/Library/Application Support/TextMate/PlugIns/ProjectPlus.tmplugin'",
   ].each do |tmate_cmd|
     execute tmate_cmd do
       user node['current_user']
@@ -9,13 +10,13 @@ run_unless_marker_file_exists("textmate_plugins_0") do
   end
 
   execute "make textmate plugins directory" do
-    command "mkdir -p '#{node['etc']['passwd'][node['current_user']]['dir']}/Library/Application Support/TextMate/PlugIns'"
+    command "mkdir -p '#{homedir}/Library/Application Support/TextMate/PlugIns'"
     user node['current_user']
-    not_if { File.exists?("#{node['etc']['passwd'][node['current_user']]['dir']}/Library/Application Support/TextMate/PlugIns") }
+    not_if { File.exists?("#{homedir}/Library/Application Support/TextMate/PlugIns") }
   end
 
   execute "copy to TextMate" do
-    command "cp -Rf /Volumes/ProjectPlus/ProjectPlus.tmplugin '#{node['etc']['passwd'][node['current_user']]['dir']}/Library/Application Support/TextMate/PlugIns'"
+    command "cp -Rf /Volumes/ProjectPlus/ProjectPlus.tmplugin '#{homedir}/Library/Application Support/TextMate/PlugIns'"
     user node['current_user']
   end
 
