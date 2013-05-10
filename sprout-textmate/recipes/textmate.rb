@@ -28,4 +28,4 @@ unless File.exists?("/Applications/TextMate.app")
   end
 end
 
-include_recipe "sprout-osx-apps::textmate_link"
+include_recipe "sprout-textmate::textmate_link"
