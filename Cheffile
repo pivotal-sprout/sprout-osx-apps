@@ -1,0 +1,6 @@
+site 'http://community.opscode.com/api/v1'
+
+cookbook 'pivotal_workstation', :path => './pivotal_workstation'
+cookbook 'sprout-osx-apps',     :path => './sprout-osx-apps'
+cookbook 'sprout-osx-settings', :path => './sprout-osx-settings'
+cookbook 'osx',                 :path => './osx'

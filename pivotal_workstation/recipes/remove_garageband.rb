@@ -1,11 +1,2 @@
-# This is obviously a destructive recipe.
-
-directory "/Library/Application\ Support/GarageBand" do
-  action :delete
-  recursive true
-end
-
-directory "/Applications/GarageBand.app" do
-  action :delete
-  recursive true
-end
+Chef::Log.warn "Please use sprout-osx-apps::#{File.basename(__FILE__, '.rb')}"
+include_recipe "sprout-osx-apps::#{File.basename(__FILE__, '.rb')}"

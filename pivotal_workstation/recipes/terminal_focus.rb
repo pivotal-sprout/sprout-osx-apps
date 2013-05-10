@@ -1,5 +1,2 @@
-osx_defaults "turn on focus-follows-mouse for terminal" do
-  domain 'com.apple.Terminal'
-  key 'FocusFollowsMouse'
-  string 'yes'
-end
+Chef::Log.warn "Please use sprout-osx-apps::#{File.basename(__FILE__, '.rb')}"
+include_recipe "sprout-osx-apps::#{File.basename(__FILE__, '.rb')}"
