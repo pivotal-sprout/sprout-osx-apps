@@ -11,6 +11,7 @@ Cookbooks
 
 | Cookbook            | Description                                            |
 | ------------------- | -------------------------------------------------------|
+| sprout-osx-base     | A handful of things every Sprout recipe needs          |
 | sprout-osx-apps     | Commonly used OS X Mountain Lion applications          |
 | sprout-osx-settings | Various settings & preferences for OS X Mountain Lion. |
 | pivotal_workstation | DEPRECATED in favor of sprout-*                        |

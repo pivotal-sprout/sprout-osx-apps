@@ -13,7 +13,7 @@ node.default['bash_it'] ={
       ]
   },
   'theme' => 'bobby',
-  'dir' => ::File.expand_path(".bash_it", WS_HOME),
-  'bashrc_path' => ::File.expand_path(".bash_profile", WS_HOME),
+  'dir' => ::File.expand_path(".bash_it", node['sprout']['home']),
+  'bashrc_path' => ::File.expand_path(".bash_profile", node['sprout']['home']),
   'repository' => 'http://github.com/revans/bash-it.git'
 }

@@ -23,7 +23,7 @@ ruby_block "copy mysql plist to ~/Library/LaunchAgents" do
   block do
     active_mysql = Pathname.new("/usr/local/bin/mysql").realpath
     plist_location = (active_mysql + "../../"+"homebrew.mxcl.mysql.plist").to_s
-    destination = "#{WS_HOME}/Library/LaunchAgents/homebrew.mxcl.mysql.plist"
+    destination = "#{node['sprout']['home']}/Library/LaunchAgents/homebrew.mxcl.mysql.plist"
     system("cp #{plist_location} #{destination} && chown #{node['current_user']} #{destination}") || raise("Couldn't find the plist")
   end
 end
@@ -39,7 +39,7 @@ ruby_block "mysql_install_db" do
 end
 
 execute "load the mysql plist into the mac daemon startup thing" do
-  command "launchctl load -w #{WS_HOME}/Library/LaunchAgents/homebrew.mxcl.mysql.plist"
+  command "launchctl load -w #{node['sprout']['home']}/Library/LaunchAgents/homebrew.mxcl.mysql.plist"
   user node['current_user']
   not_if { system("launchctl list com.mysql.mysqld") }
 end

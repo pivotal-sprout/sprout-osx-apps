@@ -9,12 +9,12 @@ unless brew_installed? "redis"
   end
 
   execute "copy redis plist to ~/Library/LaunchAgents" do
-    command "cp `brew --prefix redis`/homebrew.mxcl.redis.plist #{WS_HOME}/Library/LaunchAgents/"
+    command "cp `brew --prefix redis`/homebrew.mxcl.redis.plist #{node['sprout']['home']}/Library/LaunchAgents/"
     user node['current_user']
   end
 
   execute "load the redis plist into the mac daemon startup thing" do
-    command "launchctl load -w #{WS_HOME}/Library/LaunchAgents/homebrew.mxcl.redis.plist"
+    command "launchctl load -w #{node['sprout']['home']}/Library/LaunchAgents/homebrew.mxcl.redis.plist"
     user node['current_user']
   end
 end

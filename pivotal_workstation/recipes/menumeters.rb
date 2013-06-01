@@ -59,7 +59,7 @@ unless File.exists?(menu_meters_dst)
   end
 
   # My preferences: more history graphs.  Delete this stanza if you want to go with the defaults.
-  plist_path = File.expand_path('com.ragingmenace.MenuMeters.plist', File.join(WS_HOME, 'Library', 'Preferences'))
+  plist_path = File.expand_path('com.ragingmenace.MenuMeters.plist', File.join(node['sprout']['home'], 'Library', 'Preferences'))
   template plist_path do
     source "com.ragingmenace.MenuMeters.plist.erb"
     owner node['current_user']

@@ -28,7 +28,7 @@ git node["vim_home"] do
 end
 
 %w{vimrc gvimrc}.each do |vimrc|
-  link "#{WS_HOME}/.#{vimrc}" do
+  link "#{node['sprout']['home']}/.#{vimrc}" do
     to "#{node["vim_home"]}/#{vimrc}"
     owner node['current_user']
     not_if { File.symlink?("#{node["vim_home"]}/#{vimrc}") }
@@ -56,10 +56,10 @@ execute "verify that command-t is correctly compiled for macvim" do
   only_if "test -d #{cmdt_dir}"
 end
 
-file "#{WS_HOME}/.vimrc.local" do
+file "#{node['sprout']['home']}/.vimrc.local" do
   action :touch
   owner node['current_user']
-  not_if { File.exists?("#{WS_HOME}/.vimrc.local") }
+  not_if { File.exists?("#{node['sprout']['home']}/.vimrc.local") }
 end
 
 pivotal_workstation_bash_it_custom_plugin "vim-source_tmux_config.bash"

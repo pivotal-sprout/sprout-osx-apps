@@ -6,7 +6,7 @@ execute "put git-scripts in /usr/local/bin" do
   not_if "which git-pair"
 end
 
-template "#{WS_HOME}/.pairs" do
+template "#{node['sprout']['home']}/.pairs" do
   owner node['current_user']
   source "git_scripts_pairs.erb"
 end

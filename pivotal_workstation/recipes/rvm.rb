@@ -3,7 +3,7 @@ include_recipe "pivotal_workstation::apple_gcc42"
 
 rvm_git_revision_hash  = version_string_for("rvm")
 
-::RVM_HOME = "#{WS_HOME}/.rvm"
+::RVM_HOME = "#{node['sprout']['home']}/.rvm"
 ::RVM_COMMAND = "#{::RVM_HOME}/bin/rvm"
 
 pivotal_workstation_bash_it_enable_feature "plugins/rvm"

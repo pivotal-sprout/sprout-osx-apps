@@ -1,14 +1,14 @@
 include_recipe "pivotal_workstation::git"
 pivotal_workstation_bash_it_custom_plugin "git-export_editor.bash"
 
-template "#{WS_HOME}/.gitignore_global" do
+template "#{node['sprout']['home']}/.gitignore_global" do
   source "gitignore_global.erb"
   owner node['current_user']
   variables(:ignore_idea => node[:git_global_ignore_idea])
 end
 
 execute "set global git ignore" do
-  command "git config --global core.excludesfile #{WS_HOME}/.gitignore_global"
+  command "git config --global core.excludesfile #{node['sprout']['home']}/.gitignore_global"
   user node['current_user']
   only_if "[ -z `git config --global core.excludesfile` ]"
 end

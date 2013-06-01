@@ -6,9 +6,9 @@ dmg_package "OmniGraffle Professional 5" do
     owner node['current_user']
 end
 
-gtemplate = "#{WS_HOME}/Library/Application Support/OmniGraffle/Templates/Konigi-UX-Template.gtemplate"
+gtemplate = "#{node['sprout']['home']}/Library/Application Support/OmniGraffle/Templates/Konigi-UX-Template.gtemplate"
 unless File.exists?(gtemplate)
-    directory "#{WS_HOME}/Library/Application Support/OmniGraffle/Templates" do
+    directory "#{node['sprout']['home']}/Library/Application Support/OmniGraffle/Templates" do
         owner node['current_user']
         mode 0755
         action :create
@@ -31,9 +31,9 @@ unless File.exists?(gtemplate)
     end
 end
 
-gdiagramstyle = "#{WS_HOME}/Library/Application Support/OmniGraffle/Diagram Styles/Konigi.gdiagramstyle"
+gdiagramstyle = "#{node['sprout']['home']}/Library/Application Support/OmniGraffle/Diagram Styles/Konigi.gdiagramstyle"
 unless File.exists?(gdiagramstyle)
-    directory "#{WS_HOME}/Library/Application Support/OmniGraffle/Diagram Styles" do
+    directory "#{node['sprout']['home']}/Library/Application Support/OmniGraffle/Diagram Styles" do
         owner node['current_user']
         mode 0755
         action :create
@@ -56,9 +56,9 @@ unless File.exists?(gdiagramstyle)
     end
 end
 
-stencils = "#{WS_HOME}/Library/Application Support/OmniGraffle/Stencils/Konigi Wireframe Stencils v3"
+stencils = "#{node['sprout']['home']}/Library/Application Support/OmniGraffle/Stencils/Konigi Wireframe Stencils v3"
 unless File.exists?(stencils)
-    directory "#{WS_HOME}/Library/Application Support/OmniGraffle/Stencils" do
+    directory "#{node['sprout']['home']}/Library/Application Support/OmniGraffle/Stencils" do
         owner node['current_user']
         mode 0755
         action :create
@@ -76,7 +76,7 @@ unless File.exists?(stencils)
     end
 
     execute "move Konigi.gdiagramstyle" do
-        command "mv #{Chef::Config[:file_cache_path]}/#{Regexp.escape("Konigi Wireframe Stencils v3")} #{Regexp.escape("#{WS_HOME}/Library/Application Support/OmniGraffle/Stencils/")}"
+        command "mv #{Chef::Config[:file_cache_path]}/#{Regexp.escape("Konigi Wireframe Stencils v3")} #{Regexp.escape("#{node['sprout']['home']}/Library/Application Support/OmniGraffle/Stencils/")}"
         user node['current_user']
     end
 end

@@ -6,14 +6,14 @@ node.default["backgrounds"]["secondary"] = ["BackToTheEdward.png"]
 node.default['login_icon'] = "tracker_dot"
 
 node['backgrounds'].each do |level, filenames|
-  directory "#{WS_HOME}/Pictures/Backgrounds#{level.capitalize}/#{filename}" do
+  directory "#{node['sprout']['home']}/Pictures/Backgrounds#{level.capitalize}/#{filename}" do
     mode "0755"
     owner node['current_user']
     recursive true
   end
 
   filenames.each do |filename|
-    remote_file "#{WS_HOME}/Pictures/Backgrounds#{level.capitalize}/#{filename}" do
+    remote_file "#{node['sprout']['home']}/Pictures/Backgrounds#{level.capitalize}/#{filename}" do
       source "#{node['background_host']}/#{filename}"
       owner node['current_user']
       action :create_if_missing
@@ -21,14 +21,14 @@ node['backgrounds'].each do |level, filenames|
   end
 end
 
-directory "#{WS_HOME}/Pictures/Icons" do
+directory "#{node['sprout']['home']}/Pictures/Icons" do
   mode "0755"
   owner node['current_user']
   recursive true
 end
 
 ["#{node['login_icon']}.png", "#{node['login_icon']}.jpeg"].each do |filename|
-  remote_file "#{WS_HOME}/Pictures/Icons/#{filename}" do
+  remote_file "#{node['sprout']['home']}/Pictures/Icons/#{filename}" do
     filename = filename.gsub(" ","%20")
     source "#{node['background_host']}/#{filename}"
     owner node['current_user']
@@ -60,7 +60,7 @@ run_unless_marker_file_exists("pivotal_logos") do
   #     ->set your picture to the one you want.  Then:
   # dscl . read /Users/$USER JPEGPhoto |tail +2 |xxd -r -p > #{Chef::Config[:file_cache_path]}/precious.jpeg
   execute("dscl . delete /Users/#{node['current_user']} JPEGPhoto")
-  execute("dscl . create /Users/#{node['current_user']} Picture \"#{WS_HOME}/Pictures/Icons/#{node['login_icon']}.png\"")
+  execute("dscl . create /Users/#{node['current_user']} Picture \"#{node['sprout']['home']}/Pictures/Icons/#{node['login_icon']}.png\"")
   execute("dsimport #{Chef::Config[:file_cache_path]}/jpegphoto.dsimport /Local/Default M")
 
   gem_package("plist")

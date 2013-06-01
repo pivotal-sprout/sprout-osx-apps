@@ -7,12 +7,12 @@ unless brew_installed? "memcached"
   end
 
   execute "copy memcached plist to ~/Library/LaunchAgents" do
-    command "cp `brew --prefix memcached`/homebrew.mxcl.memcached.plist #{WS_HOME}/Library/LaunchAgents/"
+    command "cp `brew --prefix memcached`/homebrew.mxcl.memcached.plist #{node['sprout']['home']}/Library/LaunchAgents/"
     user node['current_user']
   end
 
   execute "load the memcached plist into the mac daemon startup thing" do
-    command "launchctl load -w #{WS_HOME}/Library/LaunchAgents/homebrew.mxcl.memcached.plist"
+    command "launchctl load -w #{node['sprout']['home']}/Library/LaunchAgents/homebrew.mxcl.memcached.plist"
     user node['current_user']
   end
 end

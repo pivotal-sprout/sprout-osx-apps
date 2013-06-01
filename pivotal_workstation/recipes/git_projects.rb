@@ -26,16 +26,16 @@ node['git_projects'].each do |repo_name, repo_address, repo_dir|
   execute "clone #{repo_name}" do
     command "git clone #{repo_address} #{repo_name}"
     user node['current_user']
-    cwd "#{WS_HOME}/#{repo_dir}/"
-    not_if { ::File.exists?("#{WS_HOME}/#{repo_dir}/#{repo_name}") }
+    cwd "#{node['sprout']['home']}/#{repo_dir}/"
+    not_if { ::File.exists?("#{node['sprout']['home']}/#{repo_dir}/#{repo_name}") }
   end
 
   [ "git branch --set-upstream master origin/master",  "git submodule update --init --recursive" ].each do |git_cmd|
     execute "#{repo_name} - #{git_cmd}" do
       command git_cmd
-      cwd "#{WS_HOME}/#{repo_dir}/#{repo_name}"
+      cwd "#{node['sprout']['home']}/#{repo_dir}/#{repo_name}"
       user node['current_user']
-      not_if { ::File.exists?("#{WS_HOME}/#{repo_dir}/#{repo_name}") }
+      not_if { ::File.exists?("#{node['sprout']['home']}/#{repo_dir}/#{repo_name}") }
     end
   end
 end

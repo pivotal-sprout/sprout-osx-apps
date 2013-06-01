@@ -8,7 +8,7 @@ file "/etc/gemrc" do
   content "install: --no-rdoc --no-ri\nupdate: --no-rdoc --no-ri\n"
 end
 
-link "#{WS_HOME}/.gemrc" do
+link "#{node['sprout']['home']}/.gemrc" do
   to "/etc/gemrc"
   owner node['current_user']
 end

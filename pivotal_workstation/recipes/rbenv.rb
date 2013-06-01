@@ -1,6 +1,6 @@
 include_recipe "pivotal_workstation::git"
 
-::RBENV_HOME = "#{WS_HOME}/.rbenv"
+::RBENV_HOME = "#{node['sprout']['home']}/.rbenv"
 ::RBENV_COMMAND = "/usr/local/bin/rbenv"
 
 brew "rbenv"
