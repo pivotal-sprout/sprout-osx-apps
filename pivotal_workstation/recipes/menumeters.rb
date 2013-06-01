@@ -15,7 +15,7 @@ unless File.exists?(menu_meters_dst)
 
   execute "mount MenuMeters dmg" do
     command "hdiutil attach #{menu_meters_dmg}"
-    user WS_USER
+    user node['current_user']
   end
 
   # We're bypassing the installer.app because it requires user intervention.
@@ -26,7 +26,7 @@ unless File.exists?(menu_meters_dst)
 
   execute "unmount dmg" do
     command "hdiutil detach #{Regexp.escape(menu_meters_mnt)}"
-    user WS_USER
+    user node['current_user']
   end
 
   # Can't use defaults(1) because we need to insert MenuMeters at the _beginning_
@@ -54,20 +54,20 @@ unless File.exists?(menu_meters_dst)
         plist_handle.puts Plist::Emit.dump(ui_plist)
       end
     end
-    # long path because this command runs as root, and we're in WS_USER's preferences, not root's
-    not_if "defaults read ~#{WS_USER}/Library/Preferences/com.apple.systemuiserver menuExtras | grep 'MenuMeters.prefPane'"
+    # long path because this command runs as root, and we're in node['current_user']'s preferences, not root's
+    not_if "defaults read ~#{node['current_user']}/Library/Preferences/com.apple.systemuiserver menuExtras | grep 'MenuMeters.prefPane'"
   end
 
   # My preferences: more history graphs.  Delete this stanza if you want to go with the defaults.
   plist_path = File.expand_path('com.ragingmenace.MenuMeters.plist', File.join(WS_HOME, 'Library', 'Preferences'))
   template plist_path do
     source "com.ragingmenace.MenuMeters.plist.erb"
-    owner WS_USER
+    owner node['current_user']
   end
 
   execute "Restart SystemUIServer" do
     command 'killall -HUP SystemUIServer'
-    user WS_USER
+    user node['current_user']
     ignore_failure true # SystemUIServer is not running if not logged in
   end
 

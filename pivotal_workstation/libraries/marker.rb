@@ -19,7 +19,7 @@ class Chef::Recipe
   def run_unless_marker_file_exists(marker_file_name)
 
     directory MARKER_DIR do
-      owner WS_USER
+      owner node['current_user']
       recursive true
     end
 
@@ -33,7 +33,7 @@ class Chef::Recipe
       yield
 
       execute "touching marker file #{marker_path} after successful run" do
-        user WS_USER
+        user node['current_user']
         command "touch #{marker_path}"
       end
 

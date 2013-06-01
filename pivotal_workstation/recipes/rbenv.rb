@@ -17,5 +17,5 @@ end
 execute "making #{node["rbenv"]["default_ruby"]} with rbenv the default" do
   not_if { node["rbenv"]["default_ruby"].nil? }
   command "rbenv global #{node["rbenv"]["default_ruby"]}"
-  user WS_USER
+  user node['current_user']
 end

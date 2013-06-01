@@ -1,5 +1,5 @@
 directory "#{WS_HOME}/#{node["workspace_directory"]}" do
-  owner WS_USER
+  owner node['current_user']
   mode "0755"
   action :create
 end

@@ -2,12 +2,12 @@ include_recipe "pivotal_workstation::user_owns_usr_local"
 
 execute "put git-scripts in /usr/local/bin" do
   command "cd /usr/local/bin && curl -L http://github.com/pivotal/git_scripts/tarball/master | gunzip | tar xvf - --strip=2"
-  user WS_USER
+  user node['current_user']
   not_if "which git-pair"
 end
 
 template "#{WS_HOME}/.pairs" do
-  owner WS_USER
+  owner node['current_user']
   source "git_scripts_pairs.erb"
 end
 

@@ -8,7 +8,7 @@ unless File.exists?(GITX_PATH)
 
   remote_file "#{Chef::Config[:file_cache_path]}/gitx.zip" do
     source node["gitx_download_location"]
-    owner WS_USER
+    owner node['current_user']
   end
 
   directory "#{Chef::Config[:file_cache_path]}/GitX.app" do
@@ -18,12 +18,12 @@ unless File.exists?(GITX_PATH)
 
   execute "unzip gitx" do
     command "unzip #{Chef::Config[:file_cache_path]}/gitx.zip -d #{Chef::Config[:file_cache_path]}/"
-    user WS_USER
+    user node['current_user']
   end
 
   execute "copy gitx to /Applications" do
     command "rsync -a #{Chef::Config[:file_cache_path]}/GitX.app /Applications"
-    user WS_USER
+    user node['current_user']
     group "admin"
   end
 

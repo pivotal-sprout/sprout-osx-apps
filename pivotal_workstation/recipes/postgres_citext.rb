@@ -6,7 +6,7 @@ postgres_databases = `psql -U postgres -c '\\list' | cut -d' ' -f 2 | grep -v '^
 postgres_databases[0...-4].each do |database|
   execute "install the citext module into #{database}" do
     command "/usr/local/bin/psql -U postgres -d #{database} -c 'CREATE EXTENSION citext'"
-    user WS_USER
+    user node['current_user']
     not_if "/usr/local/bin/psql -U postgres -d #{database} -c '\\dT' | grep -i citext"
   end
 end

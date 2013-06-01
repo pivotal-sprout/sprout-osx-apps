@@ -23,14 +23,14 @@ git node["vim_home"] do
   branch "master"
   revision node["vim_hash"] || "HEAD"
   action :sync
-  user WS_USER
+  user node['current_user']
   enable_submodules true
 end
 
 %w{vimrc gvimrc}.each do |vimrc|
   link "#{WS_HOME}/.#{vimrc}" do
     to "#{node["vim_home"]}/#{vimrc}"
-    owner WS_USER
+    owner node['current_user']
     not_if { File.symlink?("#{node["vim_home"]}/#{vimrc}") }
   end
 end
@@ -42,7 +42,7 @@ execute "compile command-t" do
   # See --with-ruby-command in https://github.com/mxcl/homebrew/blob/master/Library/Formula/macvim.rb
   command "/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby extconf.rb && make clean && make"
   cwd cmdt_dir
-  user WS_USER
+  user node['current_user']
   only_if "test -d #{cmdt_dir}"
 end
 
@@ -58,7 +58,7 @@ end
 
 file "#{WS_HOME}/.vimrc.local" do
   action :touch
-  owner WS_USER
+  owner node['current_user']
   not_if { File.exists?("#{WS_HOME}/.vimrc.local") }
 end
 

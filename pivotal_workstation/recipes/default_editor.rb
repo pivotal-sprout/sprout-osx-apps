@@ -48,7 +48,7 @@ ruby_block "Set the default editor" do
       plist_handle.puts Plist::Emit.dump(ls_handler_plist)
     end
     # rebuild the launch services database; this took 6 hours to figure out.
-    `su #{WS_USER} -c "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain system -domain user"`
+    `su #{node['current_user']} -c "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain system -domain user"`
     # restart the Finder with the new icons
     `killall Finder`
   end

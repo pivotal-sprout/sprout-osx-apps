@@ -3,12 +3,12 @@ unless File.exists?("/usr/libexec/apache2/mod_jk.so")
 
   remote_file "#{Chef::Config[:file_cache_path]}/tomcat-connectors-1.2.37-src.tar.gz" do
     source "http://www.apache.org/dist/tomcat/tomcat-connectors/jk/tomcat-connectors-1.2.37-src.tar.gz"
-    owner WS_USER
+    owner node['current_user']
   end
 
   execute "extract tomcat-connectors" do
     command "tar vxzf #{Chef::Config[:file_cache_path]}/tomcat-connectors-1.2.37-src.tar.gz -C #{Chef::Config[:file_cache_path]}/"
-    user WS_USER
+    user node['current_user']
   end
 
   bash "install_program" do

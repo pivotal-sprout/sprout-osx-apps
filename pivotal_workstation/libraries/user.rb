@@ -1,6 +1,6 @@
 raise "sudo to root before running" if ENV['SUDO_USER'].nil?
 
-WS_USER = ENV['SUDO_USER'].strip
+ws_user = ENV['SUDO_USER'].strip
 
 # Some computers have "always_set_home" configured in the 
 # /etc/sudoers file for security. Instead of assuming that
@@ -12,7 +12,7 @@ WS_USER = ENV['SUDO_USER'].strip
 # no scripts break on other platforms only perform this
 # change if the home directory *is* actually root.
 if ENV['HOME'] == "/root"
-  ENV['HOME'] = WS_HOME = "/home/#{WS_USER}"
+  ENV['HOME'] = WS_HOME = "/home/#{ws_user}"
 else
   WS_HOME = ENV['HOME']
 end
@@ -21,5 +21,5 @@ end
 # so I will comment it out so no one starts using it
 #WS_LIBRARY = "#{WS_HOME}/Library"
 
-raise "should not be root" if WS_USER=="root"
-raise "directory should not be /root" if WS_HOME=="/root"
+raise "should not be root" if ws_user=="root"
+raise "directory should not be /root" if ws_user=="/root"

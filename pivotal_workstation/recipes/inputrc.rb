@@ -1,6 +1,6 @@
 inputrc_location = "#{WS_HOME}/.inputrc"
 
 template inputrc_location do
-  owner WS_USER
+  owner node['current_user']
   source "inputrc.erb"
 end

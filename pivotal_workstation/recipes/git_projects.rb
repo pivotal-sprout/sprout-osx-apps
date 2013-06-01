@@ -25,7 +25,7 @@ node['git_projects'].each do |repo_name, repo_address, repo_dir|
 
   execute "clone #{repo_name}" do
     command "git clone #{repo_address} #{repo_name}"
-    user WS_USER
+    user node['current_user']
     cwd "#{WS_HOME}/#{repo_dir}/"
     not_if { ::File.exists?("#{WS_HOME}/#{repo_dir}/#{repo_name}") }
   end
@@ -34,7 +34,7 @@ node['git_projects'].each do |repo_name, repo_address, repo_dir|
     execute "#{repo_name} - #{git_cmd}" do
       command git_cmd
       cwd "#{WS_HOME}/#{repo_dir}/#{repo_name}"
-      user WS_USER
+      user node['current_user']
       not_if { ::File.exists?("#{WS_HOME}/#{repo_dir}/#{repo_name}") }
     end
   end

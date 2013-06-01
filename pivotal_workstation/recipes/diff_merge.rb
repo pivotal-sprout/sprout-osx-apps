@@ -24,7 +24,7 @@ if (diffmerge["configure-git"] || 1) != 0
   ].each do |cmd|
     execute cmd do
       command cmd
-      user WS_USER
+      user node['current_user']
     end
   end
 end

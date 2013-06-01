@@ -10,14 +10,14 @@ define :rbenv_ruby_install do
     only_if params[:only_if] if params[:only_if]
     not_if params[:not_if] || "test -e #{::RBENV_HOME}/versions/#{ruby_version}/bin/ruby"
     command install_cmd
-    user params[:user] || WS_USER
+    user params[:user] || node['current_user']
     ignore_failure true # rbenv install appears to return 1 on completion for an unknown reason at this time
     env params[:options][:env]
   end
 
   execute "check #{ruby_version}" do
     command "#{RBENV_COMMAND} versions | grep #{ruby_version}"
-    user params[:user] || WS_USER
+    user params[:user] || node['current_user']
   end
 end
 

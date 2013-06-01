@@ -25,7 +25,7 @@ run_unless_marker_file_exists("nginx") do
   directory launch_agents_path do
     action :create
     recursive true
-    owner WS_USER
+    owner node['current_user']
   end
 
   template plist_path do
@@ -40,5 +40,5 @@ end
 
 template "/usr/local/etc/nginx/nginx.conf" do
   source "nginx.conf.erb"
-  owner WS_USER
+  owner node['current_user']
 end

@@ -8,7 +8,7 @@ unless File.exists?(node['mouse_locator_dst'])
 
   execute "mount mouse_locator dmg" do
     command "hdid #{Chef::Config[:file_cache_path]}/mouse_locator.dmg"
-    user WS_USER
+    user node['current_user']
   end
 
   # We're bypassing the installer.app because it requires intervention.
@@ -25,7 +25,7 @@ unless File.exists?(node['mouse_locator_dst'])
 
   execute "Close System Preferences" do
     command 'killall "System Preferences"'
-    user WS_USER
+    user node['current_user']
     # we don't care if it fails because it means
     # System Prefs wasn't running in the first place
     returns [0, 1]
@@ -33,17 +33,17 @@ unless File.exists?(node['mouse_locator_dst'])
 
   execute "Copy mouse_locator to ~/Library/PreferencePanes/" do
     command "cp -rf #{Regexp.escape(node["mouse_locator_src"])} #{Regexp.escape(node['mouse_locator_dst'])}"
-    user WS_USER
+    user node['current_user']
   end
 
   execute "unmount dmg" do
     command "hdiutil detach #{Regexp.escape(node["mouse_locator_dmg_mnt"])}"
-    user WS_USER
+    user node['current_user']
   end
 
   execute "Activate Mouse Locator" do
     command "open #{node["mouse_locator_app"]} &"
-    user WS_USER
+    user node['current_user']
   end
 
   ruby_block "test to see if mouse_locator was installed" do

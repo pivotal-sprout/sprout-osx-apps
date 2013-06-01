@@ -29,12 +29,12 @@ end
 
 execute "Copying homebrew's .git to /usr/local" do
   command "rsync -axSH #{Chef::Config[:file_cache_path]}/homebrew/ /usr/local/"
-  user WS_USER
+  user node['current_user']
 end
 
 execute "Run git clean in /usr/local to clear out cruft after rsync" do
   command "cd /usr/local; git clean -fd"
-  user WS_USER
+  user node['current_user']
 end
 
 ruby_block "Check that homebrew is running & working" do
@@ -47,9 +47,9 @@ ruby_block "Check that homebrew is running & working" do
 end
 
 directory "/usr/local/sbin" do
-  owner WS_USER
+  owner node['current_user']
 end
 
-directory "/Users/#{WS_USER}/Applications" do
-  owner WS_USER
+directory "/Users/#{node['current_user']}/Applications" do
+  owner node['current_user']
 end

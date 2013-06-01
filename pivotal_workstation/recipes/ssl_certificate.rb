@@ -5,7 +5,7 @@ run_unless_marker_file_exists("ssl_certificate") do
   ["/usr/local", "/usr/local/etc", cert_path, ca_path, "#{ca_path}/keys", "#{ca_path}/requests", "#{ca_path}/certs", "#{ca_path}/newcerts"].each do |dir|
     directory dir do
       recursive true
-      owner WS_USER
+      owner node['current_user']
     end
   end
 

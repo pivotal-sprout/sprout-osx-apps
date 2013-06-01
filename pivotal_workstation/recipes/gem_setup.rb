@@ -10,5 +10,5 @@ end
 
 link "#{WS_HOME}/.gemrc" do
   to "/etc/gemrc"
-  owner WS_USER
+  owner node['current_user']
 end

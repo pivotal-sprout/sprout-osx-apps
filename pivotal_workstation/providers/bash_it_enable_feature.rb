@@ -18,13 +18,13 @@ action :create do
 
   directory enabled_dir do
     recursive true
-    owner WS_USER
+    owner node['current_user']
     not_if { ::File.directory?(enabled_dir) }
   end
 
   link enabled_script_path do
     to ::File.expand_path(script_name, available_dir)
-    owner WS_USER
+    owner node['current_user']
     not_if { ::File.symlink?(enabled_script_path) }
   end
 end

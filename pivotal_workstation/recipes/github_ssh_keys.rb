@@ -1,13 +1,13 @@
 directory "#{WS_HOME}/.ssh" do
   action :create
-  owner WS_USER
+  owner node['current_user']
   group "staff"
   mode "0700"
 end
 
 file "#{WS_HOME}/.ssh/known_hosts" do
   action :create_if_missing
-  owner WS_USER
+  owner node['current_user']
   group "staff"
   mode "0644"
 end
@@ -17,7 +17,7 @@ end
 include_recipe "pivotal_workstation::rename_machine" unless node["github_project"]
 
 execute "add github to knownhosts" do
-  user WS_USER
+  user node['current_user']
   cwd "#{WS_HOME}/.ssh"
   command <<-SH
     (cat known_hosts | grep github.com) || \
@@ -26,25 +26,25 @@ execute "add github to knownhosts" do
 end
 
 execute "make sure .ssh/config is owned by the user" do
-  command "chown #{WS_USER} #{WS_HOME}/.ssh/config"
+  command "chown #{node['current_user']} #{WS_HOME}/.ssh/config"
   only_if "test -e #{WS_HOME}/.ssh/config"
 end
 
 execute "create SSH key pair for Github" do
   command "ssh-keygen -N '' -f #{WS_HOME}/.ssh/id_github_#{node["github_project"] || node['fqdn']}"
-  user WS_USER
+  user node['current_user']
   not_if "test -e #{WS_HOME}/.ssh/id_github_#{node["github_project"] || node['fqdn']}"
 end
 
 execute "symlink Github key for git-project" do
   command "ln -nfs #{WS_HOME}/.ssh/id_github_{#{node["github_project"] || node['fqdn']},current}"
-  user WS_USER
+  user node['current_user']
   only_if { node.has_key?("github_project") }
 end
 
 execute "symlink Github public key for git-project" do
   command "ln -nfs #{WS_HOME}/.ssh/id_github_{#{node["github_project"] || node['fqdn']},current}.pub"
-  user WS_USER
+  user node['current_user']
   only_if { node.has_key?("github_project") }
 end
 
@@ -52,5 +52,5 @@ execute "add Github configuration to .ssh/config" do
   config = "\n\nHost github.com\n  User git\n  IdentityFile #{WS_HOME}/.ssh/id_github_current"
   command "echo '#{config}' >> #{WS_HOME}/.ssh/config"
   not_if "grep 'id_github_current' #{WS_HOME}/.ssh/config"
-  user WS_USER
+  user node['current_user']
 end

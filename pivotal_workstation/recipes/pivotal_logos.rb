@@ -8,14 +8,14 @@ node.default['login_icon'] = "tracker_dot"
 node['backgrounds'].each do |level, filenames|
   directory "#{WS_HOME}/Pictures/Backgrounds#{level.capitalize}/#{filename}" do
     mode "0755"
-    owner WS_USER
+    owner node['current_user']
     recursive true
   end
 
   filenames.each do |filename|
     remote_file "#{WS_HOME}/Pictures/Backgrounds#{level.capitalize}/#{filename}" do
       source "#{node['background_host']}/#{filename}"
-      owner WS_USER
+      owner node['current_user']
       action :create_if_missing
     end
   end
@@ -23,7 +23,7 @@ end
 
 directory "#{WS_HOME}/Pictures/Icons" do
   mode "0755"
-  owner WS_USER
+  owner node['current_user']
   recursive true
 end
 
@@ -31,14 +31,14 @@ end
   remote_file "#{WS_HOME}/Pictures/Icons/#{filename}" do
     filename = filename.gsub(" ","%20")
     source "#{node['background_host']}/#{filename}"
-    owner WS_USER
+    owner node['current_user']
     action :create_if_missing
   end
 end
 
 template "#{Chef::Config[:file_cache_path]}/jpegphoto.dsimport" do
   source "pivotal_logos-dsimport.erb"
-  owner WS_USER
+  owner node['current_user']
 end
 
 run_unless_marker_file_exists("pivotal_logos") do
@@ -59,8 +59,8 @@ run_unless_marker_file_exists("pivotal_logos") do
   #     ->select your username->click on icon->click "Edit Picture..."
   #     ->set your picture to the one you want.  Then:
   # dscl . read /Users/$USER JPEGPhoto |tail +2 |xxd -r -p > #{Chef::Config[:file_cache_path]}/precious.jpeg
-  execute("dscl . delete /Users/#{WS_USER} JPEGPhoto")
-  execute("dscl . create /Users/#{WS_USER} Picture \"#{WS_HOME}/Pictures/Icons/#{node['login_icon']}.png\"")
+  execute("dscl . delete /Users/#{node['current_user']} JPEGPhoto")
+  execute("dscl . create /Users/#{node['current_user']} Picture \"#{WS_HOME}/Pictures/Icons/#{node['login_icon']}.png\"")
   execute("dsimport #{Chef::Config[:file_cache_path]}/jpegphoto.dsimport /Local/Default M")
 
   gem_package("plist")

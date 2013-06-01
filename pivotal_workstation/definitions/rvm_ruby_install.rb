@@ -9,7 +9,7 @@ define :rvm_ruby_install do
     only_if params[:only_if] if params[:only_if]
     not_if params[:not_if] || "test -e #{::RVM_HOME}/bin/#{ruby_version}"
     command "rm -rf #{::RVM_HOME}/archives/*#{ruby_version}* #{::RVM_HOME}/src/*#{ruby_version}*"
-    user params[:user] || WS_USER
+    user params[:user] || node['current_user']
   end
 
   install_cmd = "#{options[:env]} #{RVM_COMMAND} install #{ruby_version} #{options[:command_line_options]}"
@@ -30,11 +30,11 @@ define :rvm_ruby_install do
     only_if params[:only_if] if params[:only_if]
     not_if params[:not_if] || "test -e #{::RVM_HOME}/bin/#{ruby_version}"
     command install_cmd
-    user params[:user] || WS_USER
+    user params[:user] || node['current_user']
   end
 
   execute "check #{ruby_version}" do
     command "#{RVM_COMMAND} list | grep #{ruby_version}"
-    user params[:user] || WS_USER
+    user params[:user] || node['current_user']
   end
 end
