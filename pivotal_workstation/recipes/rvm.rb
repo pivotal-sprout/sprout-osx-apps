@@ -6,7 +6,7 @@ rvm_git_revision_hash  = version_string_for("rvm")
 ::RVM_HOME = "#{node['sprout']['home']}/.rvm"
 ::RVM_COMMAND = "#{::RVM_HOME}/bin/rvm"
 
-pivotal_workstation_bash_it_enable_feature "plugins/rvm"
+sprout_osx_base_bash_it_enable_feature "plugins/rvm"
 
 run_unless_marker_file_exists(marker_version_string_for("rvm")) do
   recursive_directories [RVM_HOME, 'src', 'rvm'] do

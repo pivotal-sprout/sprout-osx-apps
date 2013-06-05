@@ -26,13 +26,13 @@ end
 
 node['bash_it']['enabled_plugins'].each do |feature_type, features|
   features.each do |feature_name|
-    pivotal_workstation_bash_it_enable_feature "#{feature_type}/#{feature_name}"
+    sprout_osx_base_bash_it_enable_feature "#{feature_type}/#{feature_name}"
   end
 end
 
 node['bash_it']['custom_plugins'].each do |cookbook_name, custom_plugins|
   custom_plugins.each do |custom_plugin|
-    pivotal_workstation_bash_it_custom_plugin custom_plugin do
+    sprout_osx_base_bash_it_custom_plugin custom_plugin do
       cookbook cookbook_name
     end
   end

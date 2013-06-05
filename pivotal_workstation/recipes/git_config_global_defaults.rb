@@ -1,5 +1,5 @@
 include_recipe "pivotal_workstation::git"
-pivotal_workstation_bash_it_custom_plugin "git-export_editor.bash"
+sprout_osx_base_bash_it_custom_plugin "git-export_editor.bash"
 
 template "#{node['sprout']['home']}/.gitignore_global" do
   source "gitignore_global.erb"

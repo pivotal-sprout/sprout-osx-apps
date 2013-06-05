@@ -22,4 +22,4 @@ execute "test to see if macvim link worked" do
   command "test -L /Applications/MacVim.app"
 end
 
-pivotal_workstation_bash_it_custom_plugin "vim-alias_vi_to_minimal_vim.bash"
+sprout_osx_base_bash_it_custom_plugin "vim-alias_vi_to_minimal_vim.bash"

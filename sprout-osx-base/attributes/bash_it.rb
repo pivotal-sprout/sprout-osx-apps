@@ -1,3 +1,5 @@
+include_attribute "sprout-osx-base::home"
+
 node.default['bash_it'] ={
   'enabled_plugins' => {
     'aliases'    => %w[general],
