@@ -1,8 +1,2 @@
-directory "/usr/local/bin" do
-  owner node['current_user']
-  recursive true
-end
-
-execute "your current user owns /usr/local" do
-  command "chown -R #{node['current_user']} /usr/local"
-end
+Chef::Log.warn "Please use sprout-osx-base::#{File.basename(__FILE__, '.rb')}"
+include_recipe "sprout-osx-base::#{File.basename(__FILE__, '.rb')}"
