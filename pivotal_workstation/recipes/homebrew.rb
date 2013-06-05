@@ -3,8 +3,6 @@ return unless node["platform"] == "mac_os_x"
 include_recipe "pivotal_workstation::user_owns_usr_local"
 include_recipe "pivotal_workstation::bash_it"
 
-homebrew_git_revision_hash  = version_string_for("homebrew")
-
 # Do not be tempted to use the git-resource to check out
 # homebrew directly into /usr/local; it will fail if
 # it finds *anything* in /usr/local, and it will find
@@ -22,7 +20,7 @@ end
 
 git "#{Chef::Config[:file_cache_path]}/homebrew" do
   repository "https://github.com/mxcl/homebrew.git"
-  revision homebrew_git_revision_hash
+  revision node["homebrew"]["version"]
   destination "#{Chef::Config[:file_cache_path]}/homebrew"
   action :sync
 end
