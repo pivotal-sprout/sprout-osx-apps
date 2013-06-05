@@ -1,6 +1,6 @@
 class Chef::Recipe
   def brew_installed?(package)
-    include_recipe "pivotal_workstation::homebrew"
+    include_recipe "sprout-osx-base::homebrew"
     installed=(system("brew list #{package} > /dev/null 2>&1") || brew_has_multiple_versions_installed?(package))
     Chef::Log.debug("brew package #{package} " + (installed ? "IS" : "IS NOT") + " installed.")
     installed

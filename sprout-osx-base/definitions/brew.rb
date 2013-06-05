@@ -1,5 +1,5 @@
 define :brew, :action => :install do
-  include_recipe "pivotal_workstation::homebrew"
+  include_recipe "sprout-osx-base::homebrew"
   package = params[:package] || params[:name]
 
   case params[:action]
@@ -53,4 +53,3 @@ define :brew, :action => :install do
     end
   end
 end
-
