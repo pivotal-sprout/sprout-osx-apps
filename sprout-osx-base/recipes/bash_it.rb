@@ -19,7 +19,7 @@ end
 
 template node['bash_it']['bashrc_path'] do
   source "bash_it/bashrc.erb"
-  cookbook 'pivotal_workstation'
+  cookbook 'sprout-osx-base'
   owner node['current_user']
   mode "0777"
 end
