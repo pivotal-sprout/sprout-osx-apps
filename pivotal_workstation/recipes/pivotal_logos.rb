@@ -1,5 +1,5 @@
 node.default["background_host"] = "http://cheffiles.pivotallabs.com"
-node.default["backgrounds"]["primary"] = %w{blue green orange violet}.map do |color| 
+node.default["backgrounds"]["primary"] = %w{blue}.map do |color|
   "pivID_#{color}-1004x400.png"
 end
 node.default["backgrounds"]["secondary"] = ["BackToTheEdward.png"]
@@ -63,45 +63,37 @@ run_unless_marker_file_exists("pivotal_logos") do
   execute("dscl . create /Users/#{node['current_user']} Picture \"#{node['sprout']['home']}/Pictures/Icons/#{node['login_icon']}.png\"")
   execute("dsimport #{Chef::Config[:file_cache_path]}/jpegphoto.dsimport /Local/Default M")
 
-  gem_package("plist")
-
-  ruby_block "install the pivotal backgrounds" do
-    block do
-      Gem.clear_paths
-
-      require 'plist'
-      # FIXME:  if plist  doesn't exist, create it.
-      plist_file = "#{ENV['HOME']}/Library/Preferences/com.apple.desktop.plist"
-      if File.exists?(plist_file)
-        `plutil -convert xml1 #{plist_file}`
-        desktop_plist = Plist::parse_xml(plist_file)
-      else
-        desktop_plist = Plist::parse_xml('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"><plist version="1.0"><dict></dict></plist>')
-      end
-      desktop_plist["Background"] =
-        { "default" =>
-          { "BackgroundColor" =>
-              [ 0.0, 0.250980406999588, 0.501960813999176 ],
-            "Change" => "TimeInterval",
-            "ChangePath" => "/Users/pivotal/Pictures/BackgroundsPrimary",
-            "ChangeTime" => 300.0,
-            "DSKDesktopPrefPane" => {
-              "UserFolderPaths" => [
-                "/Users/pivotal/Pictures/BackgroundsPrimary",
-                "/Users/pivotal/Pictures/BackgroundsSecondary"
-              ]
-            },
-            "DrawBackgroundColor" => true,
-            "LastName" => "pivID_orange-1004x400.png",
-            "NewChangePath" => "~/Pictures/BackgroundsPrimary",
-            "NoImage" => false,
-            "Placement" => "Centered",
-            "Random" => false,
-          }
-        }
-      plist_handle = File.open(plist_file, "w")
-      plist_handle.puts Plist::Emit.dump(desktop_plist)
-      `killall Dock`
-    end
+  execute "install the pivotal backgrounds" do
+    command "/usr/libexec/PlistBuddy #{ENV['HOME']}/Library/Preferences/com.apple.desktop.plist <<EOF
+add    :Background:spaces:placeholder:0:BackgroundColor array
+add    :Background:spaces:placeholder:0:BackgroundColor:0 real 0.87058824300766
+add    :Background:spaces:placeholder:0:BackgroundColor:1 real 0.866666674613953
+add    :Background:spaces:placeholder:0:BackgroundColor:2 real 0.866666674613953
+add    :Background:spaces:placeholder:0:Change string \"Never\"
+add    :Background:spaces:placeholder:0:ChangePath string \"#{ENV['HOME']}/Pictures/BackgroundsPrimary\"
+add    :Background:spaces:placeholder:0:NewChangePath string \"#{ENV['HOME']}/Pictures/BackgroundsPrimary\"
+add    :Background:spaces:placeholder:0:ChangeTime real 1800
+add    :Background:spaces:placeholder:0:DSKDesktopPrefPane dict
+add    :Background:spaces:placeholder:0:DSKDesktopPrefPane:UserFolderPaths array
+add    :Background:spaces:placeholder:0:DSKDesktopPrefPane:UserFolderPaths:0 string \"#{ENV['HOME']}/Pictures/BackgroundsPrimary\"
+add    :Background:spaces:placeholder:0:DSKDesktopPrefPane:UserFolderPaths:1 string \"#{ENV['HOME']}/Pictures/BackgroundsSecondary\"
+add    :Background:spaces:placeholder:0:DrawBackgroundColor bool \"true\"
+add    :Background:spaces:placeholder:0:ImageFilePath string \"#{ENV['HOME']}/Pictures/BackgroundsPrimary/pivID_blue-1004x400.png\"
+add    :Background:spaces:placeholder:0:NewImageFilePath string \"#{ENV['HOME']}/Pictures/BackgroundsPrimary/pivID_blue-1004x400.png\"
+add    :Background:spaces:placeholder:0:NoImage bool \"false\"
+add    :Background:spaces:placeholder:0:Placement string \"Centered\"
+add    :Background:spaces:placeholder:0:Random bool \"false\"
+copy   :Background:spaces:placeholder:0 :Background:spaces:placeholder:default
+# Note: the key \"placeholder\" is a placeholder for a null key
+# PlistBuddy doesn't handle null keys well; our workaround is to
+# use a placeholder and then, once the tree is populated, copy
+# it into place and delete the placeholder
+copy   :Background:spaces:placeholder   :Background:spaces::
+delete :Background:spaces:placeholder
+save
+EOF"
+    user node['current_user']
   end
+  
+  execute "killall Dock"
 end
