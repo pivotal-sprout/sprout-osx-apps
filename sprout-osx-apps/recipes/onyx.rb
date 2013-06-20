@@ -9,6 +9,8 @@ source_url = case osx_majorver
     "http://www.titanium.free.fr/download/#{osx_majorver}/OnyX_153.zip"
   when '102'
    "http://www.titanium.free.fr/download/#{osx_majorver}/OnyX_1.3.1.dmg.gz"
+  else
+    "http://joel.barriere.pagesperso-orange.fr/dl/#{osx_majorver}/OnyX.dmg"
   end
 
 case osx_majorver
@@ -33,6 +35,8 @@ when '103'
 when '102'
   sha256_hash = 'ea8dac806737eb04e77b3e7d7391907b07c81cb601f8c9cbc7a6b0025efb79c7'
   onyx_ver = '1.3.1'
+else
+  raise "A version of OnyX for OSX #{node['platform_version']} is not yet supported by this cookbook"
 end
 
 case osx_majorver
