@@ -1,2 +1,2 @@
-Chef::Log.warn "Please use sprout-osx-apps::#{File.basename(__FILE__, '.rb')}"
-include_recipe "sprout-osx-apps::#{File.basename(__FILE__, '.rb')}"
+Chef::Log.warn "Please use sprout-osx-settings::#{File.basename(__FILE__, '.rb')}"
+include_recipe "sprout-osx-settings::#{File.basename(__FILE__, '.rb')}"
