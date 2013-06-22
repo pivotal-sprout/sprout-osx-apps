@@ -15,6 +15,10 @@ to get started with sprout is by using [sprout-wrap](https://github.com/pivotal-
 | sprout-pivotal      | Pivotal Labs specific configuration and settings       |
 | pivotal_workstation | DEPRECATED in favor of sprout-*                        |
 
+## Discussion List
+
+  Join [sprout-users@googlegroups.com](https://groups.google.com/forum/#!forum/sprout-users) if you use Sprout.
+
 ## References
 
 * Slides from @hiremaga's [lightning talk on Sprout](http://sprout-talk.cfapps.io/) at Pivotal Labs in June 2013
