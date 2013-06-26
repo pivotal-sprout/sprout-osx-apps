@@ -1,8 +1,13 @@
+dmg_properties   = node["sprout"]["java"]["dmg"]
+dmg_source       = dmg_properties["source"] 
+dmg_volumes_dir  = dmg_properties["volumes_dir"]
+dmg_checksum     = dmg_properties["checksum"]
+
 dmg_package "JavaForOSX" do
-  source "http://support.apple.com/downloads/DL1572/en_US/"
-  volumes_dir "Java for OS X 2013-004"
+  source dmg_source
+  volumes_dir dmg_volumes_dir
   action :install
   type "pkg"
   package_id "com.apple.pkg.JavaForMacOSX107"
-  checksum "193daf9d16ba753cb7b9160e3b3842e515575a07ac2ec06d27c21a40c30c917b"
+  checksum dmg_checksum
 end
