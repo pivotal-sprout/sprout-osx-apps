@@ -1,3 +1,5 @@
+return unless node["bash_it"]["enabled"] == true 
+
 bash_it_version = version_string_for('bash_it')
 
 git "#{Chef::Config[:file_cache_path]}/bash_it" do
