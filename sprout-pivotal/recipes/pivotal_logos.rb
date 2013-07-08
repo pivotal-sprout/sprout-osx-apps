@@ -93,7 +93,12 @@ delete :Background:spaces:placeholder
 save
 EOF"
     user node['current_user']
+    ignore_failure true # exit 1 doesn't necessarily mean failure
   end
-  
-  execute "killall Dock"
+
+  execute "restart Dock" do
+    command "killall Dock"
+    user node['current_user']
+    ignore_failure true # Dock might not be running if ssh-ing in
+  end
 end
