@@ -1,8 +1,10 @@
 include_recipe "sprout-osx-apps::virtualbox"
 
+dmg_properties = node['sprout']['vagrant']['dmg']
+
 dmg_package "Vagrant" do
-  source "http://files.vagrantup.com/packages/be0bc66efc0c5919e92d8b79e973d9911f2a511f/Vagrant-1.0.5.dmg"
-  checksum "d9ccdd454389f5830a8218c066c8f54c15d9d32ca6060bc42677b495aad08003"
+  source   dmg_properties['source']
+  checksum dmg_properties['checksum']
   action :install
   type "pkg"
   owner node['current_user']
