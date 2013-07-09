@@ -6,7 +6,7 @@ node.default["backgrounds"]["secondary"] = ["BackToTheEdward.png"]
 node.default['login_icon'] = "tracker_dot"
 
 node['backgrounds'].each do |level, filenames|
-  directory "#{node['sprout']['home']}/Pictures/Backgrounds#{level.capitalize}/#{filename}" do
+  directory "#{node['sprout']['home']}/Pictures/Backgrounds#{level.capitalize}" do
     mode "0755"
     owner node['current_user']
     recursive true
