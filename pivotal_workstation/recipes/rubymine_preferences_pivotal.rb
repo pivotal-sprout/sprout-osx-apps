@@ -23,5 +23,6 @@ end
 ["keymaps/pivotal.xml", "templates/jasmine.xml"].each do |file|
   link "#{rubymine_preferences_dir}/#{file}" do
     to "#{preferences_git_repo_location}/#{file}"
+    owner node['current_user']
   end
 end
