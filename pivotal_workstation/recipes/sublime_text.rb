@@ -1,9 +1,8 @@
 include_recipe "pivotal_workstation::user_owns_usr_local"
 
 dmg_package "Sublime Text 2" do
-  dmg_name "Sublime%20Text%202.0.1"
-  source "http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.1.dmg"
-  checksum "b5f91ee4f62d36c0490c021d5fb134b9e7cb3936"
+  source "http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.2.dmg"
+  checksum "906e71e19ae5321f80e7cf42eab8355146d8f2c3fd55be1f7fe5c62c57165add"
   owner node['current_user']
 end
 
