@@ -77,7 +77,7 @@ ruby_block "test to see if postgres is running" do
     begin
       s = TCPSocket.open('localhost',postgres_port)
     rescue => e
-      raise "postgres is not running: " << e
+      raise "postgres is not running: " << e.message
     end
     s.close
     `sudo -u #{node['current_user']} /usr/local/bin/psql -U postgres < /dev/null`
