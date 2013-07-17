@@ -1,3 +1,3 @@
-node.default["intellij_ultimate_edition_download_uri"]="http://download.jetbrains.com/idea/ideaIU-12.1.2.dmg"
-node.default["intellij_ultimate_edition_sha"]="75d981489c52e2af8a015186fbd94cb6c72684622c35d4b6ef91f8e929f2ee77"
+node.default["intellij_ultimate_edition_download_uri"]="http://download.jetbrains.com/idea/ideaIU-12.1.4.dmg"
+node.default["intellij_ultimate_edition_sha"]="9a2cbf36a5966bfddcf2151b27dae9fb134136c592a465a63dfb9666d87c63d9"
 node.default["intellij_ultimate_edition_package_name"]="IntelliJ IDEA 12"
