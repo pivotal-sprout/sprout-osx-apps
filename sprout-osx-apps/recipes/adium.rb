@@ -1,7 +1,9 @@
+dmg_properties = node['sprout']['adium']['dmg']
+
 dmg_package "Adium" do
-  volumes_dir "Adium 1.5.6"
-  source "http://sourceforge.net/projects/adium/files/Adium_1.5.6.dmg/download"
-  checksum "d5f580b7db57348c31f8e0f18691d7758a65ad61471bf984955360f91b21edb8"
+  volumes_dir dmg_properties['volumes_dir']
+  source      dmg_properties['source']
+  checksum    dmg_properties['checksum']
   action :install
   owner node['current_user']
 end
