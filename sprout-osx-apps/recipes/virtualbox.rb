@@ -1,6 +1,8 @@
+dmg_properties = node['sprout']['virtualbox']['dmg']
+
 dmg_package "VirtualBox" do
-  source "http://download.virtualbox.org/virtualbox/4.2.8/VirtualBox-4.2.8-83876-OSX.dmg"
-  checksum "e090da9766a1780a4f1fc6b3b85fe8b7ce71c8030d1fda9e7178716009d69a33"
+  source dmg_properties['source']
+  checksum dmg_properties['checksum']
   action :install
   owner node['current_user']
   type "pkg"
