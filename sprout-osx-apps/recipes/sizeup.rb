@@ -1,5 +1,5 @@
 unless File.exists?("/Applications/SizeUp.app")
-  include_recipe "pivotal_workstation::enable_assistive_devices"
+  include_recipe "sprout-osx-settings::enable_assistive_devices"
 
   remote_file "#{Chef::Config[:file_cache_path]}/sizeup.zip" do
     source node["sizeup_download_uri"]
