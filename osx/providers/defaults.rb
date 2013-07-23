@@ -4,6 +4,7 @@ action :write do
     user node['current_user']
     not_if "defaults read #{new_resource.domain} #{new_resource.key} | grep ^#{value}$"
   end
+  new_resource.updated_by_last_action(true)
 end
 
 def type_flag

@@ -21,7 +21,6 @@ TODO List:
   -array-add <value1> <value2> ...
   -dict <key1> <value1> <key2> <value2> ...
   -dict-add <key1> <value1> ..
-* Should support notifies
 * Should support overrides of not_if with a more complex block
 
 =end
