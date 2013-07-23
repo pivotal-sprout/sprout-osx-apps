@@ -1,3 +1,5 @@
+use_inline_resources
+
 action :write do
   execute "#{new_resource.description} - #{new_resource.domain} - #{new_resource.key}"  do
     command "defaults write #{new_resource.domain} #{new_resource.key} #{type_flag} #{value}"
