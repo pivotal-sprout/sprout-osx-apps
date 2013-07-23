@@ -1,4 +1,4 @@
-osx_defaults "set dock to be on left" do
+osx_defaults "set dock to be on #{node['dock_preferences']['orientation']}" do
   domain "com.apple.dock"
   key "orientation"
   string node["dock_preferences"]["orientation"]
