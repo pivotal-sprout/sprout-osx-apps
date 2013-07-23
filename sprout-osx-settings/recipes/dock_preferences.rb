@@ -10,6 +10,12 @@ osx_defaults 'set dock to autohide' do
   boolean node["dock_preferences"]["autohide"] && node["dock_preferences"]["autohide"] != 'false'
 end
 
+osx_defaults 'toggle dock magnification on/off' do
+  domain 'com.apple.dock'
+  key 'magnification'
+  boolean node['dock_preferences']['magnification']
+end
+
 execute "relaunch dock" do
   command "killall Dock"
 end
