@@ -6,18 +6,10 @@ ruby_block "Remove Expose Keyboard Shortcut for '#{shortcut_name}'" do
     system(
     "osascript -e '
       tell application \"System Events\"
-        if UI elements enabled then
-          tell expose preferences
-            set the properties of the #{shortcut_name} shortcut to {function key:none, function key modifiers:{none}}
-            set the properties of the #{shortcut_name} shortcut to {function key:none}
-          end tell
-        else
-          tell application \"System Preferences\"
-            activate
-            set current pane to pane \"com.apple.preference.universalaccess\"
-            display dialog \"UI element scripting is not enabled. Check \\\"Enable access for assistive devices\\\"\"
-          end tell
-        end if
+        tell expose preferences
+          set the properties of the #{shortcut_name} shortcut to {function key:none, function key modifiers:{none}}
+          set the properties of the #{shortcut_name} shortcut to {function key:none}
+        end tell
       end tell'"
     )
   end
