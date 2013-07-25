@@ -1,9 +1,12 @@
-unless File.exists?(node["iterm2_app_path"])
+app_properties = node['sprout']['iterm2']['app']
+dmg_properties = node['sprout']['iterm2']['dmg']
+
+unless File.exists?(app_properties['path'])
 
   remote_file "#{Chef::Config[:file_cache_path]}/iTerm2.zip" do
-    source node["iterm2_download_url"]
+    source dmg_properties['source']
+    checksum dmg_properties['checksum']
     owner node['current_user']
-    checksum node["iterm2_checksum"]
   end
 
   execute "unzip iterm2" do
@@ -11,8 +14,8 @@ unless File.exists?(node["iterm2_app_path"])
     user node['current_user']
   end
 
-  execute "copy iterm2 to /Applications" do
-    command "mv #{Chef::Config[:file_cache_path]}/iTerm.app #{Regexp.escape(node["iterm2_app_path"])}"
+  execute "move iterm2 to /Applications" do
+    command "mv #{Chef::Config[:file_cache_path]}/iTerm.app #{Regexp.escape(app_properties['path'])}"
     user node['current_user']
     group "admin"
   end
