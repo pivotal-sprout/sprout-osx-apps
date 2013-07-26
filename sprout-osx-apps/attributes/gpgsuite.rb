@@ -1,0 +1,6 @@
+default['sprout']['gpgsuite']['dmg']['source']      = 'https://s3.amazonaws.com/gpgtools/GPG%20Suite%20-%202013.07.27.dmg'
+default['sprout']['gpgsuite']['dmg']['checksum']    = 'eab2a899578b4138babfd816054878ddcd867fac3b938b425174cab5c08d1b66'
+default['sprout']['gpgsuite']['dmg']['volumes_dir'] = 'GPG Suite'
+default['sprout']['gpgsuite']['dmg']['dmg_name']    = 'GPGSuite'
+default['sprout']['gpgsuite']['dmg']['app']         = 'Install'
+default['sprout']['gpgsuite']['dmg']['type']        = 'pkg'
