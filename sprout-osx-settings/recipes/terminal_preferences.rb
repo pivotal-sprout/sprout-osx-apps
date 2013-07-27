@@ -1,9 +1,3 @@
-execute "clear the Terminal apps save state" do
-  command "rm -rf #{ENV['HOME']}/Library/Saved\\ Application\\ State/com.apple.Terminal.savedState"
-  user node['current_user']
-  ignore_failure true
-end
-
 osx_defaults "Set terminal profile to #{node['terminal']['profile']}" do
   domain 'com.apple.Terminal'
   key 'Default Window Settings'
@@ -31,11 +25,13 @@ execute "Turns on Anti-Aliasing for the #{node['terminal']['profile']} profile's
   user node['current_user']
 end
 
-ruby_block "let's see what it looks like" do
-  block do
-    puts `/usr/libexec/PlistBuddy -c 'print :Window\\ Settings:#{node['terminal']['profile']}:Font ' #{ENV['HOME']}/Library/Preferences/com.apple.Terminal.plist | strings`
-  end
+execute "Closes window when shell exits cleanly the #{node['terminal']['profile']} profile" do
+  command "/usr/libexec/PlistBuddy -c 'set :Window\\ Settings:#{node['terminal']['profile']}:shellExitAction 1' #{ENV['HOME']}/Library/Preferences/com.apple.Terminal.plist"
+  user node['current_user']
 end
 
-
-execute 'killall Finder; killall Dock; killall SystemUIServer'
+execute "clear the preferences cache" do
+  command "killall cfprefsd"
+  user node['current_user']
+  ignore_failure true
+end
