@@ -30,8 +30,4 @@ execute "Closes window when shell exits cleanly the #{node['terminal']['profile'
   user node['current_user']
 end
 
-execute "clear the preferences cache" do
-  command "killall cfprefsd"
-  user node['current_user']
-  ignore_failure true
-end
+execute 'killall cfprefsd'
