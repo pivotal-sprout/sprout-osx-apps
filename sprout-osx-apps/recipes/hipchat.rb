@@ -8,12 +8,12 @@ unless File.exists?("/Applications/#{app}")
     owner node['current_user']
   end
 
-  execute "unzip tower" do
+  execute "unzip hipchat" do
     command "unzip #{Chef::Config[:file_cache_path]}/#{zip} -d #{Chef::Config[:file_cache_path]}/"
     user node['current_user']
   end
 
-  execute "copy tower to /Applications" do
+  execute "copy hipchat to /Applications" do
     command "mv #{Chef::Config[:file_cache_path]}/#{app} #{Regexp.escape("/Applications/#{app}")}"
     user node['current_user']
     group "admin"
