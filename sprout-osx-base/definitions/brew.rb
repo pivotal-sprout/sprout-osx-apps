@@ -5,7 +5,7 @@ define :brew, :action => :install do
   case params[:action]
   when :install
 
-    outdated = system("brew outdated 2>/dev/null | grep -q #{package}")
+    outdated = system("brew outdated 2>/dev/null | grep -q '^#{package}$'")
     Chef::Log.debug("brew package #{package} " + (outdated ? "IS" : "IS NOT") + " outdated.")
 
     multiple_versions_installed = system("brew list #{package} 2>/dev/null | grep -q '#{package} has multiple installed versions'")
@@ -39,7 +39,7 @@ define :brew, :action => :install do
     end
   when :upgrade
     execute "brew upgrade #{package}" do
-      only_if params[:only_if] || "brew outdated | grep #{package}"
+      only_if params[:only_if] || "brew outdated | grep '^#{package}$'"
       not_if params[:not_if] if params[:not_if]
       user params[:user] || node['current_user']
       command "brew upgrade #{package}"
