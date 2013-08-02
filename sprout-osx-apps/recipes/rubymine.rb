@@ -1,8 +1,8 @@
 include_recipe "pivotal_workstation::java"
 
 dmg_package "RubyMine" do
-  source "http://download-ln.jetbrains.com/ruby/RubyMine-5.4.1.dmg"
-  checksum "87d70c1ca11ecb292b6acc8075232cbf4e14bdacfac0f8931c6bc9ac09e05613"
+  source "http://download.jetbrains.com/ruby/RubyMine-5.4.3.dmg"
+  checksum "dd391ac16983e5ccd876ddd8ac1323b2eae40e69814ecf9ab34b005fecd623df"
   action :install
   owner node['current_user']
 end
