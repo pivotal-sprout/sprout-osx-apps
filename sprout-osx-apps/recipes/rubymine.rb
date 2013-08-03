@@ -1,4 +1,4 @@
-include_recipe "pivotal_workstation::java"
+include_recipe "sprout-osx-apps::java"
 
 dmg_package "RubyMine" do
   source "http://download.jetbrains.com/ruby/RubyMine-5.4.3.dmg"
