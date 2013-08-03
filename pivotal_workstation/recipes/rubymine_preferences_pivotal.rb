@@ -1,3 +1,5 @@
+Chef::Log.warn "Please use sprout-osx-rubymine::preferences"
+
 rubymine_preferences_dir = "#{node['sprout']['home']}/Library/Preferences/RubyMine50"
 preferences_git_repo_location =  "#{Chef::Config[:file_cache_path]}/Pivotal-Preferences-RubyMine"
 
