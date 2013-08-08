@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/pivotal-sprout/sprout.png)](https://waffle.io/pivotal-sprout/sprout)  
 # sprout
 
 [![Build Status](https://travis-ci.org/pivotal-sprout/sprout.png?branch=master)](https://travis-ci.org/pivotal-sprout/sprout)
