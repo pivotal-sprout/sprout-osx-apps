@@ -1,6 +1,7 @@
 # sprout
 
 [![Build Status](https://travis-ci.org/pivotal-sprout/sprout.png?branch=master)](https://travis-ci.org/pivotal-sprout/sprout)
+[![Stories in Ready](https://badge.waffle.io/pivotal-sprout/sprout.png)](http://waffle.io/pivotal-sprout/sprout)
 
 Chef cookbooks to configure an OS X Mountain Lion workstation. Successor to pivotal_workstation. The easiest way 
 to get started with sprout is by using [sprout-wrap](https://github.com/pivotal-sprout/sprout-wrap).
