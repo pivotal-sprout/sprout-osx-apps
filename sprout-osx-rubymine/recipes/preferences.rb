@@ -7,11 +7,7 @@ git preferences['clone'] do
   user node['current_user']
 end
 
-files = preferences.fetch('files') do
- Dir.chdir(preferences['clone']) { `find */* -type f`.split("\n") }
-end
-
-subdirs = files.map do |file|
+subdirs = preferences['files'].map do |file|
   File.dirname(file)
 end.uniq
 
@@ -23,7 +19,7 @@ subdirs.each do |subdir|
   end
 end
 
-files.each do |file|
+preferences['files'].each do |file|
   link "#{preferences['dir']}/#{file}" do
     to "#{preferences['clone']}/#{file}"
     owner node['current_user']
