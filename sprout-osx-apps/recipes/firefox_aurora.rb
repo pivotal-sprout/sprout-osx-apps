@@ -6,6 +6,7 @@ dmg_package 'Firefox Aurora' do
   volumes_dir config['volumes_dir']
   app config['app']
   source config['source']
+  checksum config['checksum']
   action :install
   owner node['current_user']
 end
