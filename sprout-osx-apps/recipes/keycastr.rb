@@ -1,4 +1,4 @@
-include_recipe "pivotal_workstation::addloginitem"
+include_recipe "sprout-osx-base::addloginitem"
 
 app_path="/Applications/KeyCastr.app"
 
