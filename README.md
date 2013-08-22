@@ -23,6 +23,7 @@ to get started with sprout is by using [sprout-wrap](https://github.com/pivotal-
 ## References
 
 * Slides from @hiremaga's [lightning talk on Sprout](http://sprout-talk.cfapps.io/) at Pivotal Labs in June 2013
+* [Railscast on chef-solo](http://railscasts.com/episodes/339-chef-solo-basics) by Ryan Bates (PAID)
 
 ## Tips
 
