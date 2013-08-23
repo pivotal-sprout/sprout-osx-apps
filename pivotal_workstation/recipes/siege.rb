@@ -1,5 +1,2 @@
-if node["platform"] != "mac_os_x"
-    package "siege"
-else
-    brew "siege"
-end
+Chef::Log.warn "Please use sprout-osx-apps::#{File.basename(__FILE__, '.rb')}"
+include_recipe "sprout-osx-apps::#{File.basename(__FILE__, '.rb')}"
