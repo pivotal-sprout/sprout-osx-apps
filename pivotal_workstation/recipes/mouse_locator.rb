@@ -31,6 +31,11 @@ unless File.exists?(node['mouse_locator_dst'])
     returns [0, 1]
   end
 
+  directory File.dirname(node['mouse_locator_dst']) do
+    user node['current_user']
+    recursive true
+  end
+
   execute "Copy mouse_locator to ~/Library/PreferencePanes/" do
     command "cp -rf #{Regexp.escape(node["mouse_locator_src"])} #{Regexp.escape(node['mouse_locator_dst'])}"
     user node['current_user']
