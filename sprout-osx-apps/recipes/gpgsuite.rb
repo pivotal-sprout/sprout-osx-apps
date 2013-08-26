@@ -7,8 +7,7 @@ dmg_package "GPG Suite" do
   dmg_name    dmg_properties['dmg_name']
   app         dmg_properties['app']
   type        dmg_properties['type']
-  package_id 'org.gpgtools.libmacgpgB.pkg' # Force upgrade from old GPGTools since dmg_package has no action :upgrade
-  # package_id 'org.gpgtools.*'
+  package_id 'org.gpgtools.libmacgpgB.pkg'
   owner node['current_user']
 end
 
