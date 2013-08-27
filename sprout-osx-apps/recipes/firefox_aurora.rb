@@ -2,7 +2,7 @@
 # http://www.mozilla.org/en-US/firefox/aurora/
 
 dmg_package 'Firefox Aurora' do
-  config = node['sprout']['firefox']['aurora']['dmg']
+  config = node['sprout']['firefox_aurora']['dmg']
   volumes_dir config['volumes_dir']
   app config['app']
   source config['source']
