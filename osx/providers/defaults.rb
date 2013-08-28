@@ -1,6 +1,8 @@
+require 'shellwords'
+
 action :write do
   execute "#{new_resource.description} - #{new_resource.domain} - #{new_resource.key}"  do
-    command "defaults write #{new_resource.domain} #{new_resource.key} #{type_flag} #{value}"
+    command "defaults write #{new_resource.domain} #{key} #{type_flag} #{value}"
     user node['current_user']
     not_if "defaults read #{new_resource.domain} #{new_resource.key} | grep ^#{value}$"
   end
@@ -14,9 +16,13 @@ def type_flag
   ''
 end
 
+def key
+  Shellwords.escape(new_resource.key)
+end
+
 def value
   new_resource.integer ||
-    new_resource.string ||
+    new_resource.string && Shellwords.escape(new_resource.string) ||
     (new_resource.float && new_resource.float.to_f) ||
     new_resource.boolean
 end
