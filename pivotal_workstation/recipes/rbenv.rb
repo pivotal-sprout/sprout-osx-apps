@@ -8,6 +8,20 @@ brew "ruby-build"
 
 sprout_osx_base_bash_it_enable_feature "plugins/rbenv"
 
+directory "#{::RBENV_HOME}/plugins" do
+  owner node["current_user"]
+end
+
+git "#{::RBENV_HOME}/plugins/rbenv-default-gems" do
+  repository "https://github.com/sstephenson/rbenv-default-gems.git"
+  user node["current_user"]
+end
+
+template "#{::RBENV_HOME}/default-gems" do
+  owner node['current_user']
+  source "default-gems.erb"
+end
+
 node["rbenv"]["rubies"].each do |version, options|
   rbenv_ruby_install version do
     options options
