@@ -1,7 +1,9 @@
 # sprout
 
 [![Build Status](https://travis-ci.org/pivotal-sprout/sprout.png?branch=master)](https://travis-ci.org/pivotal-sprout/sprout)
-[![Stories in Ready](https://badge.waffle.io/pivotal-sprout/sprout.png)](http://waffle.io/pivotal-sprout/sprout)
+[![Stories in Ready](https://badge.waffle.io/pivotal-sprout/sprout.png?label=ready)](https://waffle.io/pivotal-sprout/sprout)
+
+Roadmap in Pivotal Tracker: https://www.pivotaltracker.com/s/projects/884116
 
 Chef cookbooks to configure an OS X Mountain Lion workstation. Successor to pivotal_workstation. The easiest way 
 to get started with sprout is by using [sprout-wrap](https://github.com/pivotal-sprout/sprout-wrap).
@@ -23,6 +25,7 @@ to get started with sprout is by using [sprout-wrap](https://github.com/pivotal-
 ## References
 
 * Slides from @hiremaga's [lightning talk on Sprout](http://sprout-talk.cfapps.io/) at Pivotal Labs in June 2013
+* [Railscast on chef-solo](http://railscasts.com/episodes/339-chef-solo-basics) by Ryan Bates (PAID)
 
 ## Tips
 
