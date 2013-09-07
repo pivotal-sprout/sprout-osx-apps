@@ -1,8 +1,26 @@
 node.default["background_host"] = "http://cheffiles.pivotallabs.com"
-node.default["backgrounds"]["primary"] = %w{blue}.map do |color|
-  "pivID_#{color}-1004x400.png"
-end
-node.default["backgrounds"]["secondary"] = ["BackToTheEdward.png"]
+node.default["backgrounds"]["primary"] = [
+  "pivotal-desktop-backgrounds/yagni.png",
+  "pivotal-desktop-backgrounds/comments-are-lies.png",
+  "pivotal-desktop-backgrounds/customer-collaboration.png",
+  "pivotal-desktop-backgrounds/individuals-and-interactions.png",
+  "pivotal-desktop-backgrounds/make-it.png",
+  "pivotal-desktop-backgrounds/pivotal-gray.png",
+  "pivotal-desktop-backgrounds/pivotal-values-kind.png",
+  "pivotal-desktop-backgrounds/pivotal-values-right.png",
+  "pivotal-desktop-backgrounds/pivotal-values-works.png",
+  "pivotal-desktop-backgrounds/responding-to-change.png",
+  "pivotal-desktop-backgrounds/strong-opinions-loosely-held.png",
+  "pivotal-desktop-backgrounds/working-software.png",
+  "pivotal-desktop-backgrounds/ya-aint-gonna-need-it.png",
+  "pivotal-desktop-backgrounds/yagni.png",
+  "pivID_blue-1004x400.png"
+]
+
+node.default["backgrounds"]["secondary"] = [
+  "BackToTheEdward.png"
+]
+
 node.default['login_icon'] = "tracker_dot"
 
 node['backgrounds'].each do |level, filenames|
@@ -13,7 +31,8 @@ node['backgrounds'].each do |level, filenames|
   end
 
   filenames.each do |filename|
-    remote_file "#{node['sprout']['home']}/Pictures/Backgrounds#{level.capitalize}/#{filename}" do
+    remote_file "#{node['sprout']['home']}/Pictures/Backgrounds#{level.capitalize}/#{filename.gsub(/.*\//,'')}" do
+    # remote_file "#{node['sprout']['home']}/Pictures/Backgrounds/" do
       source "#{node['background_host']}/#{filename}"
       owner node['current_user']
       action :create_if_missing
