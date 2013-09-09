@@ -4,7 +4,7 @@
 include_recipe "sprout-osx-base::homebrew"
 
 execute "install macvim and use its vim as system vim" do
-  command "brew install macvim --override-system-vim"
+  command "brew install https://raw.github.com/felixbuenemann/homebrew/macvim-fix-mavericks-compile/Library/Formula/macvim.rb --override-system-vim"
   user node['current_user']
   not_if "brew list | grep '^macvim$'"
 end
