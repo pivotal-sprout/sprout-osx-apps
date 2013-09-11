@@ -17,7 +17,6 @@ TODO List:
 * Remaining params that need to be supported:
   -data <hex_digits>
   -date <date_rep>
-  -array <value1> <value2> ...
   -array-add <value1> <value2> ...
   -dict <key1> <value1> <key2> <value2> ...
   -dict-add <key1> <value1> ..
@@ -36,7 +35,7 @@ attribute :integer, :kind_of => Integer, :default => nil
 attribute :string, :kind_of => String, :default => nil
 attribute :boolean, :kind_of => [ TrueClass, FalseClass ], :default => nil
 attribute :float, :kind_of => [Float, Integer], :default => nil
-attribute :array, :kind_of => [Array, String, Integer], :defaults => nil
+attribute :array, :kind_of => Array, :default => nil
 
 def initialize(name, run_context=nil)
   super
