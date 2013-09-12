@@ -51,12 +51,12 @@ define :brew, :action => :install do
       user params[:user] || node['current_user']
       command "brew update"
     end
-  when :tap
-    execute "brew tap #{package}" do
+  when :tap, :untap
+    execute "brew #{params[:action]} #{package}" do
       only_if params[:only_if] if params[:only_if]
       not_if params[:not_if] if params[:not_if]
       user params[:user] || node['current_user']
-      command "brew tap #{package}"
+      command "brew #{params[:action]} #{package}"
     end
   end
 end
