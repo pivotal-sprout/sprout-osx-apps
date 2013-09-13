@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Additional Settings</key>
+	<dict>
+		<key>Multistrip</key>
+		<true/>
+	</dict>
+	<key>Children</key>
+	<array>
+		<dict>
+			<key>Children</key>
+			<array/>
+			<key>Launch Group</key>
+			<false/>
+			<key>Title</key>
+			<string>Hidden</string>
+			<key>Type</key>
+			<string>Top-Level Container: Hidden</string>
+		</dict>
+		<dict>
+			<key>Children</key>
+			<array/>
+			<key>Launch Group</key>
+			<false/>
+			<key>Title</key>
+			<string>Menu Bar (Left)</string>
+			<key>Type</key>
+			<string>Top-Level Container: Menu Bar</string>
+		</dict>
+		<dict>
+			<key>Children</key>
+			<array>
+				<dict>
+					<key>Children</key>
+					<array>
+						<dict>
+							<key>Content</key>
+							<string>Recent pasteboards: Menu</string>
+							<key>Type</key>
+							<string>Smart Item: List</string>
+						</dict>
+						<dict>
+							<key>Children</key>
+							<array>
+								<dict>
+									<key>Additional Settings</key>
+									<dict>
+										<key>Assigned Abbreviations Only</key>
+										<false/>
+										<key>Postpone Searching</key>
+										<false/>
+										<key>Postpone Searching Interval</key>
+										<integer>100</integer>
+									</dict>
+									<key>Task</key>
+									<string>Enter abbreviation...</string>
+									<key>Title</key>
+									<string>Enter abbreviation...</string>
+									<key>Type</key>
+									<string>Control</string>
+								</dict>
+								<dict>
+									<key>Type</key>
+									<string>Separator</string>
+								</dict>
+								<dict>
+									<key>Task</key>
+									<string>Customize configuration...</string>
+									<key>Title</key>
+									<string>Customize...</string>
+									<key>Type</key>
+									<string>Control</string>
+								</dict>
+								<dict>
+									<key>Task</key>
+									<string>Search configuration...</string>
+									<key>Title</key>
+									<string>Search configuration...</string>
+									<key>Type</key>
+									<string>Control</string>
+								</dict>
+								<dict>
+									<key>Task</key>
+									<string>Help</string>
+									<key>Title</key>
+									<string>Help!</string>
+									<key>Type</key>
+									<string>Control</string>
+								</dict>
+								<dict>
+									<key>Type</key>
+									<string>Separator</string>
+								</dict>
+								<dict>
+									<key>Task</key>
+									<string>Preferences</string>
+									<key>Title</key>
+									<string>Preferences</string>
+									<key>Type</key>
+									<string>Control</string>
+								</dict>
+								<dict>
+									<key>Type</key>
+									<string>Separator</string>
+								</dict>
+								<dict>
+									<key>Task</key>
+									<string>Update</string>
+									<key>Title</key>
+									<string>Update</string>
+									<key>Type</key>
+									<string>Control</string>
+								</dict>
+								<dict>
+									<key>Task</key>
+									<string>Quit</string>
+									<key>Title</key>
+									<string>Quit</string>
+									<key>Type</key>
+									<string>Control</string>
+								</dict>
+							</array>
+							<key>Custom Icon Identifier</key>
+							<string>menu_butler</string>
+							<key>Launch Group</key>
+							<false/>
+							<key>Title</key>
+							<string>Butler</string>
+							<key>Type</key>
+							<string>Container</string>
+						</dict>
+					</array>
+					<key>Custom Icon Identifier</key>
+					<string>menu_pasteboard</string>
+					<key>Hot Key</key>
+					<dict>
+						<key>Code</key>
+						<integer>9</integer>
+						<key>Key</key>
+						<string>⇧⌘V</string>
+						<key>Modifiers</key>
+						<integer>1179914</integer>
+						<key>Pop Up</key>
+						<string>yes</string>
+					</dict>
+					<key>Launch Group</key>
+					<false/>
+					<key>Title</key>
+					<string>Recent pasteboards: Menu</string>
+					<key>Type</key>
+					<string>Container</string>
+				</dict>
+			</array>
+			<key>Launch Group</key>
+			<false/>
+			<key>Title</key>
+			<string>Menu Bar (Natural)</string>
+			<key>Type</key>
+			<string>Top-Level Container: Menu Bar</string>
+		</dict>
+		<dict>
+			<key>Children</key>
+			<array/>
+			<key>Launch Group</key>
+			<false/>
+			<key>Title</key>
+			<string>Menu Bar (Center)</string>
+			<key>Type</key>
+			<string>Top-Level Container: Menu Bar</string>
+		</dict>
+		<dict>
+			<key>Children</key>
+			<array/>
+			<key>Launch Group</key>
+			<false/>
+			<key>Title</key>
+			<string>Menu Bar (Right)</string>
+			<key>Type</key>
+			<string>Top-Level Container: Menu Bar</string>
+		</dict>
+		<dict>
+			<key>Children</key>
+			<array/>
+			<key>Launch Group</key>
+			<false/>
+			<key>Title</key>
+			<string>Docklet</string>
+			<key>Type</key>
+			<string>Top-Level Container: Docklet</string>
+		</dict>
+	</array>
+	<key>Launch Group</key>
+	<false/>
+	<key>PM Resource ID</key>
+	<dict>
+		<key>Root</key>
+		<true/>
+		<key>Type</key>
+		<string>Butler Configuration Items</string>
+		<key>Version</key>
+		<real>1</real>
+	</dict>
+	<key>Title</key>
+	<string></string>
+	<key>Type</key>
+	<string>Configuration</string>
+</dict>
+</plist>
