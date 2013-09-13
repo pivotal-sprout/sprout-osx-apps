@@ -1,7 +1,9 @@
-dmg_package "Dropbox" do
-  volumes_dir "Dropbox Installer"
-  source "https://www.dropbox.com/download?plat=mac"
-  checksum "1169d604ed3db8b15449753f7cf9c5af2b86afefcf598231d44dc29551c4a489"
+dmg_properties = node['sprout']['dropbox']['dmg']
+
+dmg_package 'Dropbox' do
+  volumes_dir 'Dropbox Installer'
+  source dmg_properties['source']
+  checksum dmg_properties['checksum']
   action :install
   owner node['current_user']
 end

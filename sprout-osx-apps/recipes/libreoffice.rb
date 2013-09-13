@@ -5,5 +5,4 @@ dmg_package "LibreOffice" do
   source dmg_properties['source']
   checksum dmg_properties['checksum']
   owner node['current_user']
-  action :install
 end

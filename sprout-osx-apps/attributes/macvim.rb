@@ -1,0 +1,5 @@
+default["sprout"]["macvim"]["source"]    = "https://macvim.googlecode.com/files/MacVim-snapshot-70-Mountain-Lion.tbz"
+default["sprout"]["macvim"]["checksum"]  = "45cbd33534ae121424d5411900ac68e32aa2aa7b097257defcdab0c6066f571b"
+default["sprout"]["macvim"]["extracted"] = "MacVim-snapshot-70"
+default["sprout"]["macvim"]["app"]       = "MacVim.app"
+default["sprout"]["macvim"]["bin"]       = "mvim"
