@@ -17,7 +17,7 @@ directory "/Users/#{node['current_user']}/Library/Mail" do
   owner node['current_user']
 end
 
-directory "/Users/#{node['current_user']}/.gnupg" do
+directory "#{node['sprout']['home']}/.gnupg" do
   mode 0700
   owner node['current_user']
 end
