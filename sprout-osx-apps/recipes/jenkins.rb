@@ -1,21 +1,23 @@
 include_recipe "sprout-osx-base::homebrew"
+jenkins_properties = node['sprout']['jenkins']
 
-execute "install jenkins via homebrew" do
-  command "brew install jenkins"
-  user node['current_user']
-  not_if "brew list | grep '^jenkins$'"
+brew "jenkins"
+
+directory jenkins_properties['plugins_dir'] do
+  action :create
+  owner node['current_user']
+  recursive true
 end
 
-['ruby-runtime', 'git-client', 'token-macro', 'rvm', 'git'].each do |plugin|
+jenkins_properties['plugins'].each do |plugin|
   execute "install #{plugin} plugin" do
     user node['current_user']
-    command "curl -L http://updates.jenkins-ci.org/latest/#{plugin}.hpi -o ~/.jenkins/plugins/#{plugin}.hpi"
+    command "curl -L http://updates.jenkins-ci.org/latest/#{plugin}.hpi -o #{jenkins_properties['plugins_dir']}/#{plugin}.hpi"
   end
 end
 
-execute "add jenkins to auto-run" do
-  user node['current_user']
-  command "ln -sfv /usr/local/opt/jenkins/*.plist ~/Library/LaunchAgents"
+link "/Users/#{node['current_user']}/Library/LaunchAgents/homebrew.mxcl.jenkins.plist" do
+    to "/usr/local/opt/jenkins/homebrew.mxcl.jenkins.plist"
 end
 
 execute "run jenkins" do
