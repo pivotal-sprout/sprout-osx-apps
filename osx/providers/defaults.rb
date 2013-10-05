@@ -10,6 +10,7 @@ end
 
 def type_flag
   return '-int' if new_resource.integer
+  return '-array' if new_resource.array
   return '-string' if new_resource.string
   return '-float' if new_resource.float
   return '-boolean' unless new_resource.boolean.nil?
@@ -24,5 +25,6 @@ def value
   new_resource.integer ||
     new_resource.string && Shellwords.escape(new_resource.string) ||
     (new_resource.float && new_resource.float.to_f) ||
+    (new_resource.array && new_resource.array.map{|x| Shellwords.escape(x)}.join(' ')) ||
     new_resource.boolean
 end
