@@ -25,3 +25,7 @@ unless File.exists?("/Applications/#{app}")
     end
   end
 end
+
+node['sprout']['hipchat']['settings'].each do |name, value|
+  execute "/usr/libexec/PlistBuddy -c 'Set #{name} #{value}' #{node['sprout']['home']}/Library/Preferences/com.hipchat.HipChat.plist"
+end
