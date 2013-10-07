@@ -1,1 +1,2 @@
-brew "http://raw.github.com/Homebrew/homebrew-dupes/master/apple-gcc42.rb"
+Chef::Log.warn "Please use sprout-osx-base::#{File.basename(__FILE__, '.rb')}"
+include_recipe "sprout-osx-base::#{File.basename(__FILE__, '.rb')}"
