@@ -24,6 +24,13 @@ run_unless_marker_file_exists(marker_version_string_for("rvm")) do
     end
   end
 
+  template "#{node['sprout']['home']}/.rvmrc" do
+    source 'rvmrc.erb'
+    owner node['current_user']
+    group node['etc']['passwd'][node['current_user']]['gid']
+    variables ( { :env_vars => node["rvm"]["rvmrc"]["env_vars"] } )
+  end
+
   %w{readline autoconf openssl zlib}.each do |rvm_pkg|
     execute "install rvm pkg: #{rvm_pkg}" do
       command "#{::RVM_COMMAND} pkg install --verify-downloads 1 #{rvm_pkg}"
