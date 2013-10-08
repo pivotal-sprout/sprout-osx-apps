@@ -20,14 +20,11 @@ include_recipe "pivotal_workstation::workspace_directory"
 
 node['git_projects'].each do |repo_name, repo_address, repo_dir|
 
-  # Make sure repo dir is under workspace_directory if user has defined it
-  repo_dir = "#{node['workspace_directory']}/#{repo_dir}" unless repo_dir.nil?
-  
   # Allow the user to override the working directory
   repo_dir ||= node['workspace_directory']
 
   # Recursively create any directories under home (important if user passes multiple sub directories for repo dir)
-  recursive_directories [ "#{node['sprout']['home']}" ].concat repo_dir.split(File::SEPARATOR).delete_if(&:empty?) do
+  recursive_directories [ node['sprout']['home'] ].concat repo_dir.split(File::SEPARATOR).delete_if(&:empty?) do
     owner node['current_user']
     mode "0755"
     action :create
