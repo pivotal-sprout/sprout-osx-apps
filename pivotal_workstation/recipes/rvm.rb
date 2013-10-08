@@ -33,11 +33,6 @@ run_unless_marker_file_exists(marker_version_string_for("rvm")) do
 end
 
 node["rvm"]["rubies"].each do |version, options|
-  # Use nCPU +1 threads to build if attribute is set
-  if node['rvm']['multithread_build']
-    options[:env] = "" if options[:env].nil?
-    options[:env] = options[:env] + " rvm_make_flags=\"-j#{`sysctl -n hw.ncpu`.to_i + 1}\""
-  end
   rvm_ruby_install version do
     options options
   end

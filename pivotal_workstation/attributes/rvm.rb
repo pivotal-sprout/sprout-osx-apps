@@ -8,4 +8,3 @@ node.default["rvm"]["rubies"] = {
 }
 
 node.default["rvm"]["default_ruby"] = "ruby-1.9.3-p392"
-node.default["rvm"]["multithread_build"] = false
