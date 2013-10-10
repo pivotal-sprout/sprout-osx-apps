@@ -1,13 +1,17 @@
 include_recipe "sprout-osx-base::homebrew"
 jenkins_properties = node['sprout']['jenkins']
 
-brew "jenkins"
+directory jenkins_properties['base_dir'] do
+  action :create
+  owner node['current_user']
+end
 
 directory jenkins_properties['plugins_dir'] do
   action :create
   owner node['current_user']
-  recursive true
 end
+
+brew "jenkins"
 
 jenkins_properties['plugins'].each do |plugin|
   execute "install #{plugin} plugin" do
