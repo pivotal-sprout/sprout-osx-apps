@@ -40,7 +40,7 @@ cmdt_dir = "#{node["vim_home"]}/bundle/command-t/ruby/command-t"
 execute "compile command-t" do
   # This matches the ruby that homebrew currently uses to `brew install macvim`
   # See --with-ruby-command in https://github.com/mxcl/homebrew/blob/master/Library/Formula/macvim.rb
-  command "/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby extconf.rb && make clean && make"
+  command "/System/Library/Frameworks/Ruby.framework/Versions/Current/usr/bin/ruby extconf.rb && make clean && make"
   cwd cmdt_dir
   user node['current_user']
   only_if "test -d #{cmdt_dir}"

@@ -1,0 +1,76 @@
+diff --git pivotal_workstation/recipes/mysql.rb pivotal_workstation/recipes/mysql.rb
+index 686678ef028d7f5a669c0095fa9b20f04b239be4..07c28afe95e806f4b1b1a067c2d6e50d14e7b90f 100644
+--- pivotal_workstation/recipes/mysql.rb
++++ pivotal_workstation/recipes/mysql.rb
+@@ -17,6 +17,7 @@ include_recipe "sprout-osx-base::homebrew"
+   end
+ end
+ 
++# Delete the 'perl -pi -e' stanzas as soon as Mavericks/Homebrew/MySQL is fixed
+ # https://github.com/mxcl/homebrew/issues/21367
+ execute 'perl -pi -e "s~<string>10.9</string>~<string>10.8</string>~" /System/Library/CoreServices/SystemVersion.plist'
+ 
+@@ -24,12 +25,6 @@ brew "mysql"
+ 
+ execute 'perl -pi -e "s~<string>10.8</string>~<string>10.9</string>~" /System/Library/CoreServices/SystemVersion.plist'
+ 
+-osx_defaults "I'm done with pretending!" do
+-  domain '/System/Library/CoreServices/SystemVersion.plist'
+-  key 'ProductVersion'
+-  string '10.8'
+-end
+-
+ ruby_block "copy mysql plist to ~/Library/LaunchAgents" do
+   block do
+     active_mysql = Pathname.new("/usr/local/bin/mysql").realpath
+diff --git pivotal_workstation/recipes/vim_config.rb pivotal_workstation/recipes/vim_config.rb
+index a31f037619b1a01cd0c0eda76e3002845da30dc9..66402d2dc8206063366f950f1665c4e189c15eca 100644
+--- pivotal_workstation/recipes/vim_config.rb
++++ pivotal_workstation/recipes/vim_config.rb
+@@ -40,7 +40,7 @@ cmdt_dir = "#{node["vim_home"]}/bundle/command-t/ruby/command-t"
+ execute "compile command-t" do
+   # This matches the ruby that homebrew currently uses to `brew install macvim`
+   # See --with-ruby-command in https://github.com/mxcl/homebrew/blob/master/Library/Formula/macvim.rb
+-  command "/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby extconf.rb && make clean && make"
++  command "/System/Library/Frameworks/Ruby.framework/Versions/Current/usr/bin/ruby extconf.rb && make clean && make"
+   cwd cmdt_dir
+   user node['current_user']
+   only_if "test -d #{cmdt_dir}"
+diff --git sprout-osx-base/attributes/homebrew.rb sprout-osx-base/attributes/homebrew.rb
+index d7bcb19340437ad2e81bf9418cb49fb2ffbac206..009901e852ed56b0dabbd3245ad6fcbf8b4a8f45 100644
+--- sprout-osx-base/attributes/homebrew.rb
++++ sprout-osx-base/attributes/homebrew.rb
+@@ -1 +1,4 @@
+-node.default['homebrew']['version'] = 'master'
++node.default['homebrew'] = {
++    'version' => 'master',
++    'repository' => 'http://github.com/mxcl/homebrew.git'
++}
+\ No newline at end of file
+diff --git sprout-osx-base/recipes/homebrew.rb sprout-osx-base/recipes/homebrew.rb
+index 3e51ce6c231f6a2f2645fb88b096e60e89f4b99e..1fa921cf4b6d311bb9d6a6a1478d824058c60b4e 100644
+--- sprout-osx-base/recipes/homebrew.rb
++++ sprout-osx-base/recipes/homebrew.rb
+@@ -19,9 +19,9 @@ directory Chef::Config[:file_cache_path] do
+ end
+ 
+ git "#{Chef::Config[:file_cache_path]}/homebrew" do
+-  repository "https://github.com/mxcl/homebrew.git"
++  repository  node["homebrew"]["repository"]
+   revision node["homebrew"]["version"]
+-  destination "#{Chef::Config[:file_cache_path]}/homebrew"
++/  destination "#{Chef::Config[:file_cache_path]}/homebrew"
+   action :sync
+ end
+ 
+diff --git sprout-osx-settings/recipes/finder_display_full_path.rb sprout-osx-settings/recipes/finder_display_full_path.rb
+index bb8a21cdacdfe9372a5d75b380b28acf58107fe7..649fddf4837359d0b6106c943f82d32ae2d9f4cf 100644
+--- sprout-osx-settings/recipes/finder_display_full_path.rb
++++ sprout-osx-settings/recipes/finder_display_full_path.rb
+@@ -2,4 +2,4 @@ osx_defaults "set finder to display full path in title bar" do
+   domain 'com.apple.finder'
+   key '_FXShowPosixPathInTitle'
+   boolean true
+-end
++end
+\ No newline at end of file
