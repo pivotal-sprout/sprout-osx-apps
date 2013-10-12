@@ -11,6 +11,5 @@ node.default["rvm"]["default_ruby"] = "ruby-1.9.3-p392"
 node.default["rvm"]["rvmrc"]["env_vars"] = {
     :rvm_silence_path_mismatch_check_flag => 1,
     :rvm_user_install_flag => 1,
-    :rvm_prefix => "#{node['sprout']['home']}",
-    :rvm_path => '${rvm_prefix}/.rvm'
+    :rvm_prefix => "#{node['sprout']['home']}"
 }
