@@ -1,3 +1,7 @@
 <% @env_vars.collect do | k, v | -%>
 <%= k %>="<%= v %>"
 <% end -%>
+<%# Use nCPU +1 threads to build if attribute is set -%>
+<% if @node['rvm']['multithread_build'] -%>
+rvm_make_flags="-j<%= `sysctl -n hw.ncpu`.to_i + 1 %>"
+<% end -%>
