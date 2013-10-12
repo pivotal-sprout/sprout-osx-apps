@@ -7,6 +7,7 @@ execute "install macvim and use its vim as system vim" do
   command "brew install macvim --override-system-vim"
   user node['current_user']
   not_if "brew list | grep '^macvim$'"
+  environment( { 'HOME' => node['sprout']['home'] } )
 end
 
 execute "link macvim into place" do
@@ -16,6 +17,7 @@ execute "link macvim into place" do
   command "ln -s /usr/local/Cellar/macvim/*/MacVim.app /Applications/MacVim.app"
   user node['current_user']
   not_if { File.symlink?("/Applications/MacVim.app") }
+  environment( { 'HOME' => node['sprout']['home'] } )
 end
 
 execute "test to see if macvim link worked" do
