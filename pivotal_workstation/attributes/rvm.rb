@@ -12,5 +12,5 @@ node.default["rvm"]["multithread_build"] = true
 node.default["rvm"]["rvmrc"]["env_vars"] = {
     :rvm_silence_path_mismatch_check_flag => 1,
     :rvm_user_install_flag => 1,
-    :rvm_prefix => "#{node['sprout']['home']}"
+    :rvm_prefix => node['sprout']['home']
 }
