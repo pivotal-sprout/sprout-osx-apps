@@ -14,6 +14,13 @@ run_unless_marker_file_exists(marker_version_string_for("rvm")) do
     recursive true
   end
 
+  template "#{node['sprout']['home']}/.rvmrc" do
+    source 'rvmrc.erb'
+    owner node['current_user']
+    group node['etc']['passwd'][node['current_user']]['gid']
+    variables ( { :env_vars => node["rvm"]["rvmrc"]["env_vars"] } )
+  end
+
   [
     "\\curl -L https://get.rvm.io | bash -s -- --version #{rvm_version}",
     "#{RVM_COMMAND} --version | grep Wayne"
@@ -22,13 +29,6 @@ run_unless_marker_file_exists(marker_version_string_for("rvm")) do
       user node['current_user']
       environment( { 'HOME' => node['sprout']['home'] } )
     end
-  end
-
-  template "#{node['sprout']['home']}/.rvmrc" do
-    source 'rvmrc.erb'
-    owner node['current_user']
-    group node['etc']['passwd'][node['current_user']]['gid']
-    variables ( { :env_vars => node["rvm"]["rvmrc"]["env_vars"] } )
   end
 
   %w{readline autoconf openssl zlib}.each do |rvm_pkg|
