@@ -1,2 +1,2 @@
-default['sprout']['vagrant']['dmg']['source']      = 'http://files.vagrantup.com/packages/b12c7e8814171c1295ef82416ffe51e8a168a244/Vagrant-1.3.1.dmg'
-default['sprout']['vagrant']['dmg']['checksum']    = '10a8326a7bb4d0f123001038e37a8393b40c7be9c45c7bdb995170c87a3f51a5'
+default['sprout']['vagrant']['dmg']['source']      = 'http://files.vagrantup.com/packages/a40522f5fabccb9ddabad03d836e120ff5d14093/Vagrant-1.3.5.dmg'
+default['sprout']['vagrant']['dmg']['checksum']    = 'a9486c60f0dd18c52e2c202b4a91a4024469cec6726abdf70438bcc1e79afbb4'
