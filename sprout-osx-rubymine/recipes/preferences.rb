@@ -21,7 +21,7 @@ end
 
 preferences['files'].each do |file|
   link "#{preferences['dir']}/#{file}" do
-    to "#{preferences['clone']}/#{file}"
+    to "#{preferences['clone']}/RubyMineXX/#{file}"
     owner node['current_user']
   end
 end

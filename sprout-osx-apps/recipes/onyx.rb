@@ -1,7 +1,7 @@
 dmg_package "Onyx" do
-  volumes_dir "Onyx 2.7.1"
+  volumes_dir "Onyx 2.7.3"
   source "http://joel.barriere.pagesperso-orange.fr/dl/108/OnyX.dmg"
-  checksum '94377590c4e08516c5b056d413571dbc747425b472483b25f2fc91c58e97eebd'
+  checksum '0a94c54851db7d148c4d5db6f035e666dfee8f0d55632739c8eeef98e05bdab8'
   action :install
   owner node['current_user']
 end
