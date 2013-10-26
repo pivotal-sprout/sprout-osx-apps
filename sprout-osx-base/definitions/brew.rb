@@ -18,6 +18,7 @@ define :brew, :action => :install do
         not_if params[:not_if] if params[:not_if]
         user params[:user] || node['current_user']
         command "brew remove --force #{package} && brew install #{package} #{params[:options]}"
+        environment( { 'HOME' => node['sprout']['home'] } )
       end
     end
 
@@ -28,6 +29,7 @@ define :brew, :action => :install do
 
         user params[:user] || node['current_user']
         command "brew install #{package} #{params[:options]}"
+        environment( { 'HOME' => node['sprout']['home'] } )
       end
     end
   when :remove, :uninstall
@@ -36,6 +38,7 @@ define :brew, :action => :install do
       not_if params[:not_if] if params[:not_if]
       user params[:user] || node['current_user']
       command "brew remove #{package}"
+      environment( { 'HOME' => node['sprout']['home'] } )
     end
   when :upgrade
     execute "brew upgrade #{package}" do
@@ -43,6 +46,7 @@ define :brew, :action => :install do
       not_if params[:not_if] if params[:not_if]
       user params[:user] || node['current_user']
       command "brew upgrade #{package}"
+      environment( { 'HOME' => node['sprout']['home'] } )
     end
   when :update
     execute "brew update" do
@@ -50,6 +54,7 @@ define :brew, :action => :install do
       not_if params[:not_if] if params[:not_if]
       user params[:user] || node['current_user']
       command "brew update"
+      environment( { 'HOME' => node['sprout']['home'] } )
     end
   when :tap, :untap
     execute "brew #{params[:action]} #{package}" do
@@ -57,6 +62,7 @@ define :brew, :action => :install do
       not_if params[:not_if] if params[:not_if]
       user params[:user] || node['current_user']
       command "brew #{params[:action]} #{package}"
+      environment( { 'HOME' => node['sprout']['home'] } )
     end
   end
 end

@@ -10,7 +10,7 @@ link "/usr/local/bin/subl" do
   to "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl"
 end
 
-sublime_package_path = ["#{node['sprout']['home']}/Library/Application Support/Sublime Text 2", "Packages"]
+sublime_package_path = [ node['sprout']['home'] ].concat "Library/Application Support/Sublime Text 2/Packages".split(File::SEPARATOR)
 sublime_user_path = sublime_package_path.dup << "User"
 
 recursive_directories sublime_user_path do
@@ -34,7 +34,7 @@ end
 package_dir = "#{node['sprout']['home']}/Library/Application Support/Sublime Text 2/Installed Packages"
 filename    = "Package Control.sublime-package"
 
-recursive_directories(["#{node['sprout']['home']}/Library/Application Support", "Sublime Text 2", "Installed Packages"]) do
+recursive_directories( [ node['sprout']['home'] ].concat "Library/Application Support/Sublime Text 2/Installed Packages".split(File::SEPARATOR) ) do
   owner node['current_user']
 end
 
