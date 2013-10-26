@@ -26,6 +26,12 @@ unless File.exists?("/Applications/#{app}")
   end
 end
 
+cookbook_file "/Users/#{node['current_user']}/Library/Preferences/com.hipchat.HipChat.plist" do
+  source "com.hipchat.HipChat.plist"
+  user node['current_user']
+  mode "0600"
+end
+
 node['sprout']['hipchat']['settings'].each do |name, value|
   execute "/usr/libexec/PlistBuddy -c 'Set #{name} #{value}' #{node['sprout']['home']}/Library/Preferences/com.hipchat.HipChat.plist"
 end

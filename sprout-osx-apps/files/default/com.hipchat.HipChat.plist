@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>HockeySDKAutomaticallySendCrashReports</key>
+	<false/>
+	<key>HockeySDKCrashReportActivated</key>
+	<true/>
+	<key>NSInitialToolTipDelay</key>
+	<integer>3</integer>
+	<key>SUEnableAutomaticChecks</key>
+	<false/>
+	<key>SUFeedURL</key>
+	<string>https://www.hipchat.com/release_notes/appcast/mac?version=45&amp;bundle=com.hipchat.HipChat&amp;include_minor=0</string>
+	<key>SUHasLaunchedBefore</key>
+	<true/>
+	<key>SUSendProfileInfo</key>
+	<false/>
+	<key>appVersion</key>
+	<string>45</string>
+	<key>disableSounds</key>
+	<true/>
+</dict>
+</plist>
