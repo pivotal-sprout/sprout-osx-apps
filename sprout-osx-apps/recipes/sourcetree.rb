@@ -7,3 +7,10 @@ dmg_package "SourceTree" do
   action :install
   owner node['current_user']
 end
+
+cmd_properties = node['sprout']['sourcetree']['cmd']
+
+link cmd_properties['path'] do
+  to cmd_properties['src']
+end
+
