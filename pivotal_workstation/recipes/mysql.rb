@@ -17,13 +17,7 @@ include_recipe "sprout-osx-base::homebrew"
   end
 end
 
-# Delete the 'perl -pi -e' stanzas as soon as Mavericks/Homebrew/MySQL is fixed
-# https://github.com/mxcl/homebrew/issues/21367
-execute 'perl -pi -e "s~<string>10.9</string>~<string>10.8</string>~" /System/Library/CoreServices/SystemVersion.plist'
-
 brew "mysql"
-
-execute 'perl -pi -e "s~<string>10.8</string>~<string>10.9</string>~" /System/Library/CoreServices/SystemVersion.plist'
 
 ruby_block "copy mysql plist to ~/Library/LaunchAgents" do
   block do
