@@ -1,9 +1,5 @@
-# Usage:
-# pivotal_workstation_bash_it_enable "plugins/foo"
-
 action :create do
   type, name  = new_resource.name.split("/")
-  # TODO: complain if type is not in [aliases, completion, plugins]
 
   def script_type(type)
     (type == 'plugins') ? 'plugin' : type
