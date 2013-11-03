@@ -16,6 +16,9 @@ end
 # therefore make sure we have a name first.
 include_recipe "pivotal_workstation::rename_machine" unless node["github_project"]
 
+key_name = "id_github_#{node["github_project"] || node['fqdn']}"
+key_path = "#{node['sprout']['home']}/.ssh/#{key_name}"
+
 execute "add github to knownhosts" do
   user node['current_user']
   cwd "#{node['sprout']['home']}/.ssh"
@@ -31,26 +34,26 @@ execute "make sure .ssh/config is owned by the user" do
 end
 
 execute "create SSH key pair for Github" do
-  command "ssh-keygen -N '' -f #{node['sprout']['home']}/.ssh/id_github_#{node["github_project"] || node['fqdn']}"
+  command "ssh-keygen -N '' -f #{key_path}"
   user node['current_user']
-  not_if "test -e #{node['sprout']['home']}/.ssh/id_github_#{node["github_project"] || node['fqdn']}"
+  not_if "test -e #{key_path}"
 end
 
 execute "symlink Github key for git-project" do
-  command "ln -nfs #{node['sprout']['home']}/.ssh/id_github_{#{node["github_project"] || node['fqdn']},current}"
+  command "ln -nfs #{key_path},current}"
   user node['current_user']
   only_if { node.has_key?("github_project") }
 end
 
 execute "symlink Github public key for git-project" do
-  command "ln -nfs #{node['sprout']['home']}/.ssh/id_github_{#{node["github_project"] || node['fqdn']},current}.pub"
+  command "ln -nfs #{key_path},current}.pub"
   user node['current_user']
   only_if { node.has_key?("github_project") }
 end
 
 execute "add Github configuration to .ssh/config" do
-  config = "\n\nHost github.com\n  User git\n  IdentityFile #{node['sprout']['home']}/.ssh/id_github_current"
+  config = "\n\nHost github.com\n  User git\n  IdentityFile #{key_path}"
   command "echo '#{config}' >> #{node['sprout']['home']}/.ssh/config"
-  not_if "grep 'id_github_current' #{node['sprout']['home']}/.ssh/config"
+  not_if "grep '#{key_name}' #{node['sprout']['home']}/.ssh/config"
   user node['current_user']
 end
