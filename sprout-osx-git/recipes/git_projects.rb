@@ -16,7 +16,7 @@
 #       - git@github.com:github/hubot.git
 #
 
-include_recipe "pivotal_workstation::workspace_directory"
+include_recipe "sprout-osx-base::workspace_directory"
 
 node['git_projects'].each do |repo_name, repo_address, repo_dir|
 

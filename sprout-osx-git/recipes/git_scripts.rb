@@ -1,4 +1,4 @@
-include_recipe "pivotal_workstation::user_owns_usr_local"
+include_recipe "sprout-osx-base::user_owns_usr_local"
 
 execute "put git-scripts in /usr/local/bin" do
   command "cd /usr/local/bin && curl -L http://github.com/pivotal/git_scripts/tarball/master | gunzip | tar xvf - --strip=2"
