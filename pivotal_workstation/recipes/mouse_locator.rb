@@ -38,7 +38,7 @@ unless File.exists?(node['mouse_locator_dst'])
 
   execute "Copy mouse_locator to ~/Library/PreferencePanes/" do
     command "cp -rf #{Regexp.escape(node["mouse_locator_src"])} #{Regexp.escape(node['mouse_locator_dst'])}"
-    user node['current_user']
+    user 'root'
   end
 
   execute "unmount dmg" do
