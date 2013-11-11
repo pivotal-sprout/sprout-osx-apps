@@ -1,10 +1,6 @@
-include_recipe "pivotal_workstation::user_owns_usr_local"
+include_recipe "sprout-osx-base::user_owns_usr_local"
 
-dmg_package "Sublime Text 2" do
-  source "http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.2.dmg"
-  checksum "906e71e19ae5321f80e7cf42eab8355146d8f2c3fd55be1f7fe5c62c57165add"
-  owner node['current_user']
-end
+sprout_osx_apps_homebrew_cask "sublime-text"
 
 link "/usr/local/bin/subl" do
   to "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl"
@@ -18,7 +14,7 @@ recursive_directories sublime_user_path do
 end
 
 node["sublime_text_packages"].each do |package|
-  pivotal_workstation_sublime_package package["name"] do
+  sprout_osx_apps_sublime_package package["name"] do
     source package["source"]
     destination File.join(sublime_package_path)
     owner node['current_user']
