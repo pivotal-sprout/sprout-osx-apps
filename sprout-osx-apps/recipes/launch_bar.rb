@@ -6,4 +6,5 @@ dmg_package "LaunchBar" do
   checksum    dmg_properties['checksum']
   action :install
   owner node['current_user']
+  accept_eula true
 end
