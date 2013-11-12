@@ -1,4 +1,4 @@
-include_recipe "pivotal_workstation::textmate"
+include_recipe "sprout-osx-apps::textmate"
 
 osx_defaults "set save on losing focus" do
   domain '~/Library/Preferences/com.macromates.textmate'
