@@ -22,7 +22,7 @@ run_unless_marker_file_exists("postgres") do
     recursive true
   end
 
-  brew "postgresql"
+  package "postgresql"
 
   execute "create the database" do
     command "/usr/local/bin/initdb -U postgres --encoding=utf8 --locale=en_US /usr/local/var/postgres"

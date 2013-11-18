@@ -1,1 +1,1 @@
-brew "joe"
+package "joe"

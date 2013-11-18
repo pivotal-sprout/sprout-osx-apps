@@ -1,1 +1,1 @@
-brew "python"
+package "python"

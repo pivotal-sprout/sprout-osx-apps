@@ -10,5 +10,5 @@ template "#{node['sprout']['home']}/.s3cfg" do
   )
 end
 
-brew "s3cmd"
+package "s3cmd"
 

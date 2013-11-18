@@ -1,1 +1,1 @@
-brew "leiningen"
+package "leiningen"

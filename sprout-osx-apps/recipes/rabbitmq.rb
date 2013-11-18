@@ -1,1 +1,1 @@
-brew "rabbitmq"
+package "rabbitmq"

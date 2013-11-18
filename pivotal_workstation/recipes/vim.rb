@@ -3,7 +3,7 @@
 
 include_recipe "sprout-osx-base::homebrew"
 
-brew "macvim"
+package "macvim"
 
 execute "link macvim into place" do
   # Not using `brew linkapps` because that links to ~/Applications, not

@@ -1,1 +1,1 @@
-brew "chromedriver"
+package "chromedriver"

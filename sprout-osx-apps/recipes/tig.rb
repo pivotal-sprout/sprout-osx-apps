@@ -1,1 +1,1 @@
-brew "tig"
+package "tig"

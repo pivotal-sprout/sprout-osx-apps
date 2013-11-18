@@ -1,1 +1,1 @@
-brew "jpegoptim"
+package "jpegoptim"

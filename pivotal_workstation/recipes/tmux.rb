@@ -1,5 +1,5 @@
 include_recipe "pivotal_workstation::git"
-brew "tmux"
+package "tmux"
 
 remote_file "#{node['sprout']['home']}/.tmux.conf" do
   source node["tmux_conf_file_url"]

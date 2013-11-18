@@ -1,1 +1,1 @@
-brew "gpg"
+package "gpg"

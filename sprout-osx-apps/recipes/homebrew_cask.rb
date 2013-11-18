@@ -5,7 +5,7 @@ execute "tap phinze/homebrew-cask" do
   not_if { system("brew tap | grep 'cask' > /dev/null 2>&1") }
 end
 
-brew "brew-cask"
+package "brew-cask"
 
 directory '/opt/homebrew-cask/Caskroom' do
   action :create

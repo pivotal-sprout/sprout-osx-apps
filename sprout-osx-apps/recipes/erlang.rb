@@ -1,1 +1,1 @@
-brew "erlang"
+package "erlang"
