@@ -17,9 +17,7 @@ include_recipe "sprout-osx-base::homebrew"
   end
 end
 
-# 2013-07-09 Install 5.6.10 because 5.6.12 doesn't work with mysql2 gem
-# https://github.com/pivotal-sprout/sprout-wrap/issues/11
-brew "https://raw.github.com/mxcl/homebrew/d28e5d5d6f1ec1cc383821750d2d6277030f06b9/Library/Formula/mysql.rb"
+brew "mysql"
 
 ruby_block "copy mysql plist to ~/Library/LaunchAgents" do
   block do
