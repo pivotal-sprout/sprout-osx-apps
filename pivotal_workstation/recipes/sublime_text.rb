@@ -20,7 +20,7 @@ end
 node["sublime_text_packages"].each do |package|
   pivotal_workstation_sublime_package package["name"] do
     source package["source"]
-    destination File.join(sublime_package_path)
+    destination File.join(*sublime_package_path)
     owner node['current_user']
   end
 end
