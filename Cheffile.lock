@@ -1,0 +1,88 @@
+SITE
+  remote: http://community.opscode.com/api/v1
+  specs:
+    dmg (2.0.4)
+    homebrew (1.5.2)
+
+PATH
+  remote: ./osx
+  specs:
+    osx (0.1.0)
+
+PATH
+  remote: ./pivotal_workstation
+  specs:
+    pivotal_workstation (1.0.0)
+      dmg (>= 0.0.0)
+      homebrew (>= 0.0.0)
+      osx (>= 0.0.0)
+      sprout-osx-apps (>= 0.0.0)
+      sprout-osx-base (>= 0.0.0)
+      sprout-osx-settings (>= 0.0.0)
+      sprout-pivotal (>= 0.0.0)
+
+PATH
+  remote: ./sprout-osx-apps
+  specs:
+    sprout-osx-apps (0.1.0)
+      dmg (>= 0.0.0)
+      homebrew (>= 0.0.0)
+      sprout-osx-base (>= 0.0.0)
+      sprout-osx-settings (>= 0.0.0)
+
+PATH
+  remote: ./sprout-osx-base
+  specs:
+    sprout-osx-base (0.1.0)
+
+PATH
+  remote: ./sprout-osx-git
+  specs:
+    sprout-osx-git (0.1.0)
+      homebrew (>= 0.0.0)
+      sprout-osx-base (>= 0.0.0)
+
+PATH
+  remote: ./sprout-osx-rbenv
+  specs:
+    sprout-osx-rbenv (0.1.0)
+      homebrew (>= 0.0.0)
+      sprout-osx-base (>= 0.0.0)
+
+PATH
+  remote: ./sprout-osx-rubymine
+  specs:
+    sprout-osx-rubymine (0.1.0)
+      homebrew (>= 0.0.0)
+      sprout-osx-apps (>= 0.0.0)
+      sprout-osx-base (>= 0.0.0)
+
+PATH
+  remote: ./sprout-osx-settings
+  specs:
+    sprout-osx-settings (0.1.0)
+      homebrew (>= 0.0.0)
+      osx (>= 0.0.0)
+      sprout-osx-base (>= 0.0.0)
+
+PATH
+  remote: ./sprout-pivotal
+  specs:
+    sprout-pivotal (0.1.0)
+      dmg (>= 0.0.0)
+      homebrew (>= 0.0.0)
+      sprout-osx-base (>= 0.0.0)
+
+DEPENDENCIES
+  dmg (= 2.0.4)
+  homebrew (>= 0)
+  osx (>= 0)
+  pivotal_workstation (>= 0)
+  sprout-osx-apps (>= 0)
+  sprout-osx-base (>= 0)
+  sprout-osx-git (>= 0)
+  sprout-osx-rbenv (>= 0)
+  sprout-osx-rubymine (>= 0)
+  sprout-osx-settings (>= 0)
+  sprout-pivotal (>= 0)
+
