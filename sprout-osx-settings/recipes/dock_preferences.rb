@@ -5,7 +5,7 @@ osx_defaults "set dock to be on #{node['dock_preferences']['orientation']}" do
   only_if { node['dock_preferences']['orientation'] }
 end
 
-osx_defaults 'set dock to autohide' do
+osx_defaults "set dock autohide to #{node['dock_preferences']['autohide']}" do
   domain 'com.apple.dock'
   key 'autohide'
   boolean node['dock_preferences']['autohide']
@@ -26,7 +26,14 @@ osx_defaults "adjusts dock size to #{node['dock_preferences']['tilesize']}" do
   only_if { node['dock_preferences']['tilesize'] }
 end
 
+osx_defaults 'toggle dock magnification on/off' do
+  domain 'com.apple.dock'
+  key 'magnification'
+  boolean node['dock_preferences']['magnification']
+end
+
 execute 'relaunch dock' do
   command 'killall Dock'
   only_if { !node['dock_preferences'].empty? }
 end
+
