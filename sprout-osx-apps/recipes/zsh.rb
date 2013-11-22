@@ -1,1 +1,1 @@
-brew "zsh"
+package "zsh"

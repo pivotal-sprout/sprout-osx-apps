@@ -6,9 +6,7 @@ config = node['android_sdk']
 formula = config['formula']
 haxm_pkg = config['haxm_package_name']
 
-brew formula
-
-sdk_root = `brew --prefix #{formula}`.strip
+package formula
 
 execute 'update-sdk' do
   command 'android update sdk --no-ui'
@@ -24,7 +22,7 @@ if config['install_haxm']
 
   # Symlink to cache dir so dmg_package can load the file
   link "#{Chef::Config[:file_cache_path]}/#{haxm_pkg}.dmg" do
-    to "#{sdk_root}/#{config['haxm_dmg_path']}"
+    to "#{`brew --prefix #{formula}`.strip}/#{config['haxm_dmg_path']}"
   end
 
   dmg_package haxm_pkg do

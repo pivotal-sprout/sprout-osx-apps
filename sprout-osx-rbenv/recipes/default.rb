@@ -1,8 +1,8 @@
 rubies       = node['sprout']['rbenv']['rubies']
 default_ruby = node['sprout']['rbenv']['default_ruby']
 
-brew 'rbenv'
-brew 'ruby-build'
+package 'rbenv'
+package 'ruby-build'
 
 sprout_osx_base_bash_it_enable_feature 'plugins/rbenv'
 

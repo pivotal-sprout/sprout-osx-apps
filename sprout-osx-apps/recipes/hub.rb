@@ -1,2 +1,2 @@
-brew "hub"
+package "hub"
 

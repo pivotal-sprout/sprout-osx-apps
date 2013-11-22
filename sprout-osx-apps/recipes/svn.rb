@@ -1,1 +1,1 @@
-brew "svn"
+package "svn"

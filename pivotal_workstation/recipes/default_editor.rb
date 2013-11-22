@@ -1,4 +1,4 @@
-include_recipe "pivotal_workstation::textmate"
+include_recipe "sprout-osx-apps::textmate"
 
 # This sets TextMate to be the default editor for
 # .xml, .rb, .erb, .plain-text, .yml, .yaml

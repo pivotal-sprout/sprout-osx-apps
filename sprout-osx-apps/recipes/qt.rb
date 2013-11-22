@@ -1,3 +1,5 @@
 include_recipe "sprout-osx-apps::xquartz"
 
-brew "qt"
+package "qt" do
+  options "--HEAD"
+end

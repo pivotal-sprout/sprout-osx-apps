@@ -2,7 +2,7 @@ include_recipe 'sprout-osx-base::bash_it'
 include_recipe 'sprout-osx-apps::hg'
 include_recipe 'sprout-osx-apps::bzr'
 
-brew 'go' do
+package 'go' do
   options '--cross-compile-all'
 end
 

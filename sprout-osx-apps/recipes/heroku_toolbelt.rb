@@ -1,1 +1,1 @@
-brew "heroku-toolbelt"
+package "heroku-toolbelt"

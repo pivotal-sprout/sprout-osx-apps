@@ -1,1 +1,1 @@
-brew 'p7zip'
+package 'p7zip'

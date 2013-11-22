@@ -1,1 +1,1 @@
-brew "solr"
+package "solr"

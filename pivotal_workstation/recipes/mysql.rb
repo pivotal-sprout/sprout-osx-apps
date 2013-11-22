@@ -17,7 +17,7 @@ include_recipe "sprout-osx-base::homebrew"
   end
 end
 
-brew "mysql"
+package "mysql"
 
 ruby_block "copy mysql plist to ~/Library/LaunchAgents" do
   block do

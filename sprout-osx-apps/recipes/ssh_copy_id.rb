@@ -1,1 +1,1 @@
-brew "ssh-copy-id"
+package "ssh-copy-id"

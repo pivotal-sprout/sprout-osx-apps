@@ -1,1 +1,1 @@
-brew "ctags-exuberant"
+package "ctags-exuberant"

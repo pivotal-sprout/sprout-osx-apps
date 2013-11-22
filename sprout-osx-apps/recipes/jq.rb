@@ -1,1 +1,1 @@
-brew "jq"
+package "jq"

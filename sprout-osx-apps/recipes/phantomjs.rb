@@ -1,1 +1,1 @@
-brew "phantomjs"
+package "phantomjs"

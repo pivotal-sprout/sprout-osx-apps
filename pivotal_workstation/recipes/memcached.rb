@@ -1,5 +1,5 @@
 unless brew_installed? "memcached"
-  brew "memcached"
+  package "memcached"
 
   directory "/Users/#{node['current_user']}/Library/LaunchAgents" do
     owner node['current_user']

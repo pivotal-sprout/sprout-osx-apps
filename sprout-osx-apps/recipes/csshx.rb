@@ -1,1 +1,1 @@
-brew "csshx"
+package "csshx"

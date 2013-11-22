@@ -1,1 +1,1 @@
-brew 'cdrtools'
+package 'cdrtools'

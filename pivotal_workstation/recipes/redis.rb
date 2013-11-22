@@ -1,7 +1,7 @@
 include_recipe "sprout-osx-base::homebrew"
 
 unless brew_installed? "redis"
-  brew "redis"
+  package "redis"
 
   directory "/Users/#{node['current_user']}/Library/LaunchAgents" do
     owner node['current_user']

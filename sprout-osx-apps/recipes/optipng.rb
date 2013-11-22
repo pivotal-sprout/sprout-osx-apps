@@ -1,1 +1,1 @@
-brew "optipng"
+package "optipng"

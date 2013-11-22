@@ -1,1 +1,1 @@
-brew "siege"
+package "siege"

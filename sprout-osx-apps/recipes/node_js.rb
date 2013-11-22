@@ -1,1 +1,1 @@
-brew "node"
+package "node"

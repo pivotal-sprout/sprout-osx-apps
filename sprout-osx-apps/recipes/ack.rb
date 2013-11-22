@@ -1,1 +1,1 @@
-brew "ack"
+package "ack"

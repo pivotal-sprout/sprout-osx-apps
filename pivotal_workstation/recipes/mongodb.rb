@@ -1,5 +1,5 @@
 unless brew_installed? "mongodb"
-  brew "mongodb"
+  package "mongodb"
 
   directory "/Users/#{node['current_user']}/Library/LaunchAgents" do
     owner node['current_user']

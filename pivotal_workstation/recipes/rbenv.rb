@@ -3,8 +3,8 @@ include_recipe "pivotal_workstation::git"
 ::RBENV_HOME = "#{node['sprout']['home']}/.rbenv"
 ::RBENV_COMMAND = "/usr/local/bin/rbenv"
 
-brew "rbenv"
-brew "ruby-build"
+package "rbenv"
+package "ruby-build"
 
 sprout_osx_base_bash_it_enable_feature "plugins/rbenv"
 

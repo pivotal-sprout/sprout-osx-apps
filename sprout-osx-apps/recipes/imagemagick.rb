@@ -1,1 +1,1 @@
-brew "imagemagick"
+package "imagemagick"
