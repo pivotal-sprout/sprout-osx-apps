@@ -3,3 +3,4 @@ Cheffile.lock
 Gemfile.lock
 cookbooks/
 .idea/
+.vagrant/
