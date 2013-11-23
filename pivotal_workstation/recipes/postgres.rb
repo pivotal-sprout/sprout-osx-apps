@@ -24,11 +24,6 @@ run_unless_marker_file_exists("postgres") do
 
   package "postgresql"
 
-  execute "create the database" do
-    command "/usr/local/bin/initdb -U postgres --encoding=utf8 --locale=en_US /usr/local/var/postgres"
-    user node['current_user']
-  end
-
   launch_agents_path = File.expand_path('.', File.join('~','Library', 'LaunchAgents'))
   directory launch_agents_path do
     action :create
