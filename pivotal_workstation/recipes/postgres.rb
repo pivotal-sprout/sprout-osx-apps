@@ -16,21 +16,25 @@ run_unless_marker_file_exists("postgres") do
     end
   end
 
-# blow away default image's data directory
+  package "postgresql"
+
+  # blow away default image's data directory
   directory "/usr/local/var/postgres" do
     action :delete
     recursive true
   end
-
-  package "postgresql"
-
+  
+  execute "create the database" do
+    command "/usr/local/bin/initdb -U postgres --encoding=utf8 --locale=en_US /usr/local/var/postgres"
+    user node['current_user']
+  end
+  
   launch_agents_path = File.expand_path('.', File.join('~','Library', 'LaunchAgents'))
   directory launch_agents_path do
     action :create
     recursive true
     owner node['current_user']
   end
-
 
   execute "copy over the plist" do
     command %'cp /usr/local/Cellar/postgresql/9.*/homebrew.mxcl.postgresql.plist ~/Library/LaunchAgents/'
