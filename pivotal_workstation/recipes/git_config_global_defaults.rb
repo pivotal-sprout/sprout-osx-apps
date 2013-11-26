@@ -92,3 +92,9 @@ execute "set rebase autosquash=true" do
   command "git config --global rebase.autosquash true"
   user node['current_user']
 end
+
+# http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/
+execute "mistrust ctime" do
+  command "git config --global core.trustctime false"
+  user node['current_user']
+end
