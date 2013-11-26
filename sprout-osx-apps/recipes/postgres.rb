@@ -49,7 +49,7 @@ run_unless_marker_file_exists("postgres") do
   end
 
   execute "create the database" do
-    command "/usr/local/bin/createdb -U postgres"
+    command "/usr/local/bin/createdb -U #{node['current_user']}"
     user node['current_user']
   end
   # "initdb /tmp/junk.$$" will fail unless you modify sysctl variables
@@ -57,8 +57,8 @@ run_unless_marker_file_exists("postgres") do
   #   kern.sysv.shmall=65535
   #   kern.sysv.shmmax=16777216
 
-  execute "create the postgres '#{node['current_user']}' superuser" do
-    command "/usr/local/bin/createuser -U postgres --superuser #{node['current_user']}"
+  execute "create the postgres superuser" do
+    command "/usr/local/bin/createuser -U #{node['current_user']} --superuser postgres"
     user node['current_user']
   end
 
