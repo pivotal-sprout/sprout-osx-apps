@@ -1,1 +1,1 @@
-node.default['terminal']['color_scheme'] = 'Homebrew'
+node.default['terminal']['profile'] = 'Pro'
