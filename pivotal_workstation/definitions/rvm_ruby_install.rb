@@ -30,11 +30,13 @@ define :rvm_ruby_install do
     only_if params[:only_if] if params[:only_if]
     not_if params[:not_if] || "test -e #{::RVM_HOME}/bin/#{ruby_version}"
     command install_cmd
+    environment({ 'HOME' => node['sprout']['home'] })
     user params[:user] || node['current_user']
   end
 
   execute "check #{ruby_version}" do
     command "#{RVM_COMMAND} list | grep #{ruby_version}"
     user params[:user] || node['current_user']
+    environment({ 'HOME' => node['sprout']['home'] })
   end
 end

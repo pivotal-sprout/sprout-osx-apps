@@ -1,6 +1,6 @@
 include_recipe "pivotal_workstation::git"
 
-rvm_git_revision_hash  = version_string_for("rvm")
+rvm_version  = version_string_for("rvm")
 
 ::RVM_HOME = "#{node['sprout']['home']}/.rvm"
 ::RVM_COMMAND = "#{::RVM_HOME}/bin/rvm"
@@ -13,13 +13,20 @@ run_unless_marker_file_exists(marker_version_string_for("rvm")) do
     recursive true
   end
 
+  template "#{node['sprout']['home']}/.rvmrc" do
+    source 'rvmrc.erb'
+    owner node['current_user']
+    group node['etc']['passwd'][node['current_user']]['gid']
+    variables ( { :env_vars => node["rvm"]["rvmrc"]["env_vars"] } )
+  end
+
   [
-    "curl -Lsf http://github.com/wayneeseguin/rvm/tarball/#{rvm_git_revision_hash} | tar xvz -C#{RVM_HOME}/src/rvm --strip 1",
-    "cd #{RVM_HOME}/src/rvm; ./install",
+    "\\curl -L https://get.rvm.io | bash -s -- --version #{rvm_version}",
     "#{RVM_COMMAND} --version | grep Wayne"
   ].each do |rvm_cmd|
     execute rvm_cmd do
       user node['current_user']
+      environment( { 'HOME' => node['sprout']['home'] } )
     end
   end
 
