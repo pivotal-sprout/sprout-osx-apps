@@ -3,5 +3,6 @@ node.default['dock_preferences']= {
   'autohide' => true,
   'clear_apps' => true,
   'tilesize' => 75,
+  'largesize' => 85,
   'magnification' => false
 }
