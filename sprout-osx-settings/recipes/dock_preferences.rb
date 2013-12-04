@@ -26,6 +26,13 @@ osx_defaults "adjusts dock size to #{node['dock_preferences']['tilesize']}" do
   only_if { node['dock_preferences']['tilesize'] }
 end
 
+osx_defaults "adjusts dock size to #{node['dock_preferences']['largesize']}" do
+  domain 'com.apple.dock'
+  key 'largesize'
+  integer node['dock_preferences']['largesize']
+  only_if { node['dock_preferences']['largesize'] }
+end
+
 osx_defaults 'toggle dock magnification on/off' do
   domain 'com.apple.dock'
   key 'magnification'
