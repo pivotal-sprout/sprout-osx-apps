@@ -1,4 +1,3 @@
-include_recipe 'sprout-osx-apps::python'
 path_to_dockutil = '/usr/local/bin/dockutil'
 
 cookbook_file path_to_dockutil do
