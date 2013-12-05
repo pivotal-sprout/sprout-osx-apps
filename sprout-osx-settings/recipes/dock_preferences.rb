@@ -1,39 +1,42 @@
-osx_defaults "set dock to be on #{node['dock_preferences']['orientation']}" do
+prefs = node['sprout']['dock_preferences']
+
+osx_defaults "set dock to be on #{prefs['orientation']}" do
   domain 'com.apple.dock'
   key 'orientation'
-  string node['dock_preferences']['orientation']
-  only_if { node['dock_preferences']['orientation'] }
+  string prefs['orientation']
+  only_if { prefs['orientation'] }
 end
 
-osx_defaults "set dock autohide to #{node['dock_preferences']['autohide']}" do
+osx_defaults "set dock autohide to #{prefs['autohide']}" do
   domain 'com.apple.dock'
   key 'autohide'
-  boolean node['dock_preferences']['autohide']
-  only_if { node['dock_preferences'].keys.include?('autohide') }
+  boolean prefs['auto_hide']
+  only_if { prefs.keys.include?('auto_hide') }
 end
 
 osx_defaults 'remove persistent apps from the dock' do
   domain 'com.apple.dock'
   key 'persistent-apps'
   array []
-  only_if { node['dock_preferences']['clear_apps'] }
+  only_if { prefs['clear_apps'] }
 end
 
-osx_defaults "adjusts dock size to #{node['dock_preferences']['tilesize']}" do
+osx_defaults "adjusts dock size to #{prefs['tile_size']}" do
   domain 'com.apple.dock'
   key 'tilesize'
-  integer node['dock_preferences']['tilesize']
-  only_if { node['dock_preferences']['tilesize'] }
+  integer prefs['tile_size']
+  only_if { prefs['tile_size'] }
 end
 
 osx_defaults 'toggle dock magnification on/off' do
   domain 'com.apple.dock'
   key 'magnification'
-  boolean node['dock_preferences']['magnification']
+  boolean prefs['magnification']
+  not_if { prefs['magnification'].nil? }
 end
 
 execute 'relaunch dock' do
   command 'killall Dock'
-  only_if { !node['dock_preferences'].empty? }
+  only_if { !prefs.empty? }
 end
 
