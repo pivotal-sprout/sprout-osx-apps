@@ -1,6 +1,10 @@
 include_recipe "pivotal_workstation::git"
 sprout_osx_base_bash_it_custom_plugin "git-export_editor.bash"
 
+log_msg="pivotal_workstation::git_config_global_defaults recipe will be DEPRECATED going forward. Use sprout-osx-git::config instead!"
+log(log_msg) { level :warn }
+
+
 template "#{node['sprout']['home']}/.gitignore_global" do
   source "gitignore_global.erb"
   owner node['current_user']
