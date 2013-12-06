@@ -1,2 +1,2 @@
 default['sprout']['dropbox']['dmg']['source'] = 'https://www.dropbox.com/download?plat=mac'
-default['sprout']['dropbox']['dmg']['checksum'] = '1169d604ed3db8b15449753f7cf9c5af2b86afefcf598231d44dc29551c4a489'
+default['sprout']['dropbox']['dmg']['checksum'] = '662a066f9b1aa3a7facad5b94bd8f82fcd9d4ab0653604d0ddb8e098e9efcd76'
