@@ -9,7 +9,7 @@ ruby_block "Show User Home In Sidebar" do
         set user_home to folder \"#{username}\" of folder \"Users\" of Startup disk
         select user_home
         delay 1
-        tell application \"System Events\" to tell process \"Finder\" to keystroke \"t\" using command down
+        tell application \"System Events\" to tell process \"Finder\" to keystroke \"t\" using {command down, control down}
         close window 1
       end tell'"
     )
