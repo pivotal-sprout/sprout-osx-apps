@@ -1,5 +1,3 @@
-return unless node["platform"] == "mac_os_x"
-
 include_recipe "sprout-osx-base::user_owns_usr_local"
 include_recipe "sprout-osx-base::bash_it"
 
