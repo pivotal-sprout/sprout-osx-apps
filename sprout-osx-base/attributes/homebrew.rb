@@ -1,4 +1,4 @@
 node.default['homebrew'] = {
     'version' => 'master',
-    'repository' => 'http://github.com/mxcl/homebrew.git'
+    'repository' => 'http://github.com/Homebrew/homebrew.git'
 }
