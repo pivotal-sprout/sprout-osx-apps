@@ -1,10 +1,5 @@
 include_recipe "sprout-osx-base::user_owns_usr_local"
 
-execute "tap caskroom/versions" do
-  command "brew tap caskroom/versions"
-  not_if "brew tap | grep 'cask' > /dev/null 2>&1"
-end
-
 sprout_osx_apps_homebrew_cask "sublime-text3"
 
 link "/usr/local/bin/subl" do
