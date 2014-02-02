@@ -1,17 +1,19 @@
 appname = 'InsomniaX'
+source_properties = node['sprout']['insomniax']['tgz']
 
 unless File.exists?("/Applications/#{appname}.app")
 
-  remote_file "#{Chef::Config[:file_cache_path]}/InsomniaX.tgz" do
-    source node['sprout']['insomniax']['tgz']['source']
+  remote_file "#{Chef::Config[:file_cache_path]}/#{appname}.tgz" do
+    source source_properties['source']
     owner node['current_user']
-    checksum node['sprout']['insomniax']['tgz']['checksum']
+    checksum source_properties['checksum']
   end
 
   execute "unpack #{appname}" do
     command "gunzip -c '#{Chef::Config[:file_cache_path]}/#{appname}.tgz' | tar xopf -"
     cwd Chef::Config[:file_cache_path]
     user node['current_user']
+    only_if source_properties['type'] == 'tgz'
   end
 
   execute "copy #{appname} to /Applications" do
