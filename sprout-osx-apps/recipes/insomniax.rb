@@ -1,12 +1,11 @@
-dmg_properties = node['sprout']['insomniax']['tgz']
 appname = 'InsomniaX'
 
-unless File.exists?("/Applications/InsomniaX.app")
+unless File.exists?("/Applications/#{appname}.app")
 
   remote_file "#{Chef::Config[:file_cache_path]}/#{appname}.tgz" do
-    source "#{dmg_properties['tgz']['source']}"
+    source node['sprout']['insomniax']['source']
     owner node['current_user']
-    checksum "#{dmg_properties['tgz']['checksum']}"
+    checksum node['sprout']['insomniax']['checksum']
   end
 
   execute "unzip 1password" do
@@ -20,7 +19,7 @@ unless File.exists?("/Applications/InsomniaX.app")
     group "admin"
   end
 
-  ruby_block "test to see if 1Password.app was installed" do
+  ruby_block "test to see if #{appname}.app was installed" do
     block do
       raise "#{appname}.app was not installed" unless File.exists?("/Applications/#{appname}.app")
     end
