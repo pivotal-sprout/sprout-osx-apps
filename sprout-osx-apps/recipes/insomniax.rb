@@ -3,9 +3,9 @@ appname = 'InsomniaX'
 unless File.exists?("/Applications/#{appname}.app")
 
   remote_file "#{Chef::Config[:file_cache_path]}/InsomniaX.tgz" do
-    source node['sprout']['insomniax']['source']
+    source node['sprout']['insomniax']['tgz']['source']
     owner node['current_user']
-    checksum node['sprout']['insomniax']['checksum']
+    checksum node['sprout']['insomniax']['tgz']['checksum']
   end
 
   execute "unzip #{appname}" do
