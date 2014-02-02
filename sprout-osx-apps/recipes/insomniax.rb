@@ -2,13 +2,13 @@ appname = 'InsomniaX'
 
 unless File.exists?("/Applications/#{appname}.app")
 
-  remote_file "#{Chef::Config[:file_cache_path]}/#{appname}.tgz" do
+  remote_file "#{Chef::Config[:file_cache_path]}/InsomniaX.tgz" do
     source node['sprout']['insomniax']['source']
     owner node['current_user']
     checksum node['sprout']['insomniax']['checksum']
   end
 
-  execute "unzip 1password" do
+  execute "unzip #{appname}" do
     command "gunzip -c '#{Chef::Config[:file_cache_path]}/#{appname}.tgz' | tar xopf -"
     user node['current_user']
   end
