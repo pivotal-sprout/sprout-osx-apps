@@ -1,5 +1,0 @@
-default['sprout']['lastpass']['dmg']['source']      = 'https://lastpass.com/lpmacosx.dmg'
-default['sprout']['lastpass']['dmg']['checksum']    = '96dccb4703165985a3ce0e2fff00134459ae0045630205d8e84521432f316ad8'
-default['sprout']['lastpass']['dmg']['volumes_dir'] = 'LastPass for Mac OS X'
-default['sprout']['lastpass']['dmg']['type']        = 'pkg'
-default['sprout']['lastpass']['dmg']['package_id']  = 'com.lastpass.lpmacosx'
