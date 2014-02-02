@@ -13,7 +13,7 @@ unless File.exists?("/Applications/#{appname}.app")
     command "gunzip -c '#{Chef::Config[:file_cache_path]}/#{appname}.tgz' | tar xopf -"
     cwd Chef::Config[:file_cache_path]
     user node['current_user']
-    only_if source_properties['type'] == 'tgz'
+    only_if { source_properties['type'] == 'tgz' }
   end
 
   execute "copy #{appname} to /Applications" do
