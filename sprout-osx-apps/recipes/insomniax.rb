@@ -8,8 +8,9 @@ unless File.exists?("/Applications/#{appname}.app")
     checksum node['sprout']['insomniax']['tgz']['checksum']
   end
 
-  execute "unzip #{appname}" do
+  execute "unpack #{appname}" do
     command "gunzip -c '#{Chef::Config[:file_cache_path]}/#{appname}.tgz' | tar xopf -"
+    cwd Chef::Config[:file_cache_path]
     user node['current_user']
   end
 
