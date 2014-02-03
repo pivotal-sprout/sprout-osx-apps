@@ -5,12 +5,15 @@ app_destination = node['sprout']['apps']['alfred']['app_destination']
 downloaded_file = "#{Chef::Config[:file_cache_path]}/#{package_zip}"
 
 remote_file downloaded_file do
+  Chef::Log.info("Downloading file: #{File.join(package_source, package_zip)}")
   source File.join(package_source, package_zip)
   checksum package_zip_checksum
+  notifies :run, "execute[extract_alfred]", :immediately
 end
 
-execute "Extract #{package_zip}" do
+execute "extract_alfred" do
+  Chef::Log.info("Extracting File: #{downloaded_file}")
   cwd app_destination
-  command %{unzip '#{package_zip}'}
-  creates File.join(app_destination, package_zip)
+  command %{unzip -ou -d '#{app_destination}' '#{downloaded_file}'}
+  action :nothing
 end
