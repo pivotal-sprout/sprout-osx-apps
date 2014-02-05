@@ -12,7 +12,7 @@ define :ruby_install do
     user params[:user] || node['current_user']
     only_if params[:only_if] if params[:only_if]
     not_if params[:not_if] || "#{rbenv_cmd} versions | grep #{ruby_version}"
-    env params[:options][:env]
+    env options[:env]
   end
 
   execute "check #{ruby_version}" do
