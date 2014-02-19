@@ -22,6 +22,6 @@ end
 execute "start_alfred" do
   Chef::Log.info("Starting Alfred")
   command %{osascript -e "tell application \"Alfred 2\" to activate"}
-  only_if node['sprout']['apps']['alfred']['launch_after_install']
+  only_if { node['sprout']['apps']['alfred']['launch_after_install'] }
   action :nothing
 end
