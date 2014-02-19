@@ -16,4 +16,11 @@ execute "extract_alfred" do
   cwd app_destination
   command %{unzip -ou -d '#{app_destination}' '#{downloaded_file}'}
   action :nothing
+  notifies :run, "execute[start_alfred]", :immediately
+end
+
+execute "start_alfred" do
+  Chef::Log.info("Starting Alfred")
+  command %{osascript -e "tell application \"Alfred 2\" to activate"}
+  action :nothing
 end

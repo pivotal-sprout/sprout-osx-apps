@@ -1,5 +1,6 @@
 dmg_properties = node['sprout']['google_voice_and_video']['dmg']
 
+Chef::Log.info("Volumes Dir (dmg_properties): #{dmg_properties['volumes_dir']} Volumes Dir (attr): #{node['sprout']['google_voice_and_video']['dmg']['volumes_dir']}")
 dmg_package 'Google Voice and Video' do
   source dmg_properties['source']
   checksum dmg_properties['checksum']
