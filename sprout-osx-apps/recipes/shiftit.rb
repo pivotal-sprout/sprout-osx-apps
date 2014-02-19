@@ -15,9 +15,9 @@ unless File.exists?(app_path)
   end
 
   # start up on login
-  execute('Start ShiftIt on login') {
+  execute('Start ShiftIt on login') do
     command "su #{node['current_user']} -c \"addloginitem #{app_path}\""
-  }
+  end
 
   ruby_block 'Allow ShiftIt to control your computer' do
     block do
