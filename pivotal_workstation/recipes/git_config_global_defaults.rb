@@ -92,3 +92,8 @@ execute "set rebase autosquash=true" do
   command "git config --global rebase.autosquash true"
   user node['current_user']
 end
+
+execute "set push default=simple" do
+  command "git config --global push.default simple"
+  user node['current_user']
+end
