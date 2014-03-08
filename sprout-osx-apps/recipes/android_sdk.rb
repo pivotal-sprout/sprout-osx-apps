@@ -9,16 +9,17 @@ package formula
 sprout_osx_base_bash_it_custom_plugin 'bash_it/custom/android_home.bash'
 
 execute 'update-sdk-system-tools-and-platforms' do
-  command 'echo y | android update sdk --no-ui --filter build-tools-19.0.0,platform-tools,android-18,android-19,addon-google_apis-google-18,addon-google_apis-google-19'
+  command 'echo y | android update sdk --no-ui --filter build-tools-19.0.1,platform-tools,android-19,addon-google_apis-google-19'
 end
 
 execute 'update-sdk-system-images' do
-  atom_system_image_package_id = 42
-  # 42 is the answer, but also the package ID for the Intel Atom system image for SDK level 18. If we use 'sysimg-18' it will 
+  atom_system_image_package_id = 44
+  # 44 is currently the package ID for the Intel Atom system image for SDK level 19. If we use 'sysimg-19' it will
   # try to install both system images, which causes 2 license challenges, which I don't know how to handle yet.
 
-  # I'm not convinced these package IDs won't change, which would break this recipe. 
-  # See http://tools.android.com/recent/updatingsdkfromcommand-line for some basic info on how to find the ID of package.
+  # These package IDs are not permanent. They can change whenever the list of packages - stored on Google's servers - change.
+  # Meaning this recipe is not very robust. A solution would be to parse the results of 'android list sdk --all' and find the
+  # ID for the Intel Atom image.
   command "echo y | android update sdk -a --no-ui --filter #{atom_system_image_package_id}"
   user user
 end
