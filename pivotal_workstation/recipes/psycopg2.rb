@@ -1,3 +1,3 @@
-include_recipe "pivotal_workstation::postgres"
+include_recipe 'sprout-postgresql'
 
-easy_install_package "psycopg2"
+easy_install_package 'psycopg2'

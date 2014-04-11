@@ -1,4 +1,4 @@
-include_recipe "pivotal_workstation::postgres"
+include_recipe 'sprout-postgresql'
 
 postgres_databases = `psql -U postgres -c '\\list' | cut -d' ' -f 2 | grep -v '^template' | tail +4`.split("\n")
 
