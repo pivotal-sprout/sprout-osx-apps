@@ -2,7 +2,7 @@ SITE
   remote: http://community.opscode.com/api/v1
   specs:
     dmg (2.0.4)
-    homebrew (1.5.2)
+    homebrew (1.5.4)
 
 PATH
   remote: ./osx
