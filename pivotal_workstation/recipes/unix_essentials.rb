@@ -1,6 +1,6 @@
-include_recipe "sprout-osx-apps::ack"
+package "ack"
 include_recipe "pivotal_workstation::tmux"
-include_recipe "sprout-osx-apps::xquartz"
+sprout_homebrew_cask "xquartz"
 
 package "watch"
 package "ssh-copy-id"
