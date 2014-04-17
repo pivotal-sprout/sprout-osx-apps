@@ -1,4 +1,5 @@
-include_recipe "pivotal_workstation::git"
+package "git"
+
 sprout_osx_base_bash_it_custom_plugin "git-export_editor.bash"
 git_global_config = node['sprout']['git']['global_config']
 
