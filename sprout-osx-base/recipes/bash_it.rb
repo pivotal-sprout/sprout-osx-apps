@@ -37,3 +37,11 @@ node['bash_it']['custom_plugins'].each do |cookbook_name, custom_plugins|
     end
   end
 end
+
+node['bash_it']['custom_lib_plugins'].each do |cookbook_name, custom_lib_plugins|
+  custom_lib_plugins.each do |lib_plugin|
+    sprout_osx_base_bash_it_custom_lib_plugin lib_plugin do
+      cookbook cookbook_name
+    end
+  end
+end
