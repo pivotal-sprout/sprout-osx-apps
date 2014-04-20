@@ -1,4 +1,4 @@
-include_recipe 'sprout-osx-base::addloginitem'
+include_recipe 'sprout-base::addloginitem'
 
 remote_file 'download TableTennisTime' do
   checksum node['sprout']['table_tennis_time']['zip']['checksum']

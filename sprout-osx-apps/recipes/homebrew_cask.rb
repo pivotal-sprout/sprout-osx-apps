@@ -1,4 +1,4 @@
-include_recipe "sprout-osx-base::homebrew"
+include_recipe "sprout-base::homebrew"
 
 execute "tap phinze/homebrew-cask" do
   command "brew tap phinze/homebrew-cask"

@@ -1,4 +1,4 @@
-include_recipe "sprout-osx-base::user_owns_usr_local"
+include_recipe "sprout-base::user_owns_usr_local"
 
 sprout_osx_apps_homebrew_cask "sublime-text"
 

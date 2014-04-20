@@ -5,12 +5,30 @@ SITE
     homebrew (1.5.4)
 
 GIT
+  remote: https://github.com/pivotal-sprout/sprout-base
+  ref: master
+  sha: 1b46050d7134de4cec3d2125e74db92d468f360c
+  specs:
+    sprout-base (0.1.0)
+
+GIT
+  remote: https://github.com/pivotal-sprout/sprout-osx-settings
+  ref: master
+  sha: a6fa98039dd572c890ff310666e5bbc838fd9385
+  specs:
+    sprout-osx-settings (0.1.0)
+      homebrew (>= 0.0.0)
+      osx (>= 0.0.0)
+      sprout-base (>= 0.0.0)
+
+GIT
   remote: https://github.com/pivotal-sprout/sprout-postgresql
   ref: master
-  sha: 7fd574a7630d5fe601e8d3e4d4bc9f4dc34da934
+  sha: 9abc130c573fd41bb51ec7959fc89678b2c8da46
   specs:
     sprout-postgresql (0.1.0)
-      homebrew (>= 0.0.0)
+      homebrew (~> 1.5.4)
+      sprout-base (>= 0.0.0)
 
 PATH
   remote: ./osx
@@ -24,10 +42,11 @@ PATH
       dmg (>= 0.0.0)
       homebrew (>= 0.0.0)
       osx (>= 0.0.0)
+      sprout-base (>= 0.0.0)
       sprout-osx-apps (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
       sprout-osx-settings (>= 0.0.0)
       sprout-pivotal (>= 0.0.0)
+      sprout-postgresql (>= 0.0.0)
 
 PATH
   remote: ./sprout-osx-apps
@@ -35,21 +54,8 @@ PATH
     sprout-osx-apps (0.1.0)
       dmg (>= 0.0.0)
       homebrew (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
+      sprout-base (>= 0.0.0)
       sprout-osx-settings (>= 0.0.0)
-
-PATH
-  remote: ./sprout-osx-base
-  specs:
-    sprout-osx-base (0.1.0)
-
-PATH
-  remote: ./sprout-osx-settings
-  specs:
-    sprout-osx-settings (0.1.0)
-      homebrew (>= 0.0.0)
-      osx (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
 
 PATH
   remote: ./sprout-pivotal
@@ -57,15 +63,15 @@ PATH
     sprout-pivotal (0.1.0)
       dmg (>= 0.0.0)
       homebrew (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
+      sprout-base (>= 0.0.0)
 
 DEPENDENCIES
   dmg (= 2.0.4)
   homebrew (>= 0)
   osx (>= 0)
   pivotal_workstation (>= 0)
+  sprout-base (>= 0)
   sprout-osx-apps (>= 0)
-  sprout-osx-base (>= 0)
   sprout-osx-settings (>= 0)
   sprout-pivotal (>= 0)
   sprout-postgresql (>= 0)

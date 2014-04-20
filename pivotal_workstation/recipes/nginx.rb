@@ -1,4 +1,4 @@
-include_recipe "sprout-osx-base::homebrew"
+include_recipe "sprout-base::homebrew"
 include_recipe "pivotal_workstation::ssl_certificate"
 
 run_unless_marker_file_exists("nginx") do

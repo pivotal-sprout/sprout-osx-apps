@@ -25,7 +25,7 @@ execute "place #{app} in /Applications" do
   not_if "test -e /Applications/#{app}"
 end
 
-include_recipe "sprout-osx-base::user_owns_usr_local"
+include_recipe "sprout-base::user_owns_usr_local"
 execute "place #{bin} to /usr/local/bin" do
   command "cp  #{Chef::Config[:file_cache_path]}/#{extracted}/#{bin} /usr/local/bin/"
   not_if "test -e /usr/local/bin/#{bin}"

@@ -1,4 +1,4 @@
-include_recipe "sprout-osx-base::homebrew"
+include_recipe "sprout-base::homebrew"
 
 unless brew_installed? "redis"
   package "redis"

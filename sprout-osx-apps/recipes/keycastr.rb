@@ -1,4 +1,4 @@
-include_recipe "sprout-osx-base::addloginitem"
+include_recipe "sprout-base::addloginitem"
 
 app_path="/Applications/KeyCastr.app"
 

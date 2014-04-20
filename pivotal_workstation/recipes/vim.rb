@@ -1,7 +1,7 @@
 # Acknowledgements: Some configuration source from
 # https://github.com/Casecommons/casecommons_workstation
 
-include_recipe "sprout-osx-base::homebrew"
+include_recipe "sprout-base::homebrew"
 
 package "macvim"
 

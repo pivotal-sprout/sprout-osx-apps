@@ -1,4 +1,4 @@
-include_recipe "sprout-osx-base::homebrew"
+include_recipe "sprout-base::homebrew"
 jenkins_properties = node['sprout']['jenkins']
 
 directory jenkins_properties['base_dir'] do

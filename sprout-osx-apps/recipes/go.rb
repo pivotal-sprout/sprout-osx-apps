@@ -1,4 +1,4 @@
-include_recipe 'sprout-osx-base::bash_it'
+include_recipe 'sprout-base::bash_it'
 include_recipe 'sprout-osx-apps::hg'
 include_recipe 'sprout-osx-apps::bzr'
 
