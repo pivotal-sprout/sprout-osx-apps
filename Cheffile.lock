@@ -44,13 +44,6 @@ PATH
     sprout-osx-base (0.1.0)
 
 PATH
-  remote: ./sprout-osx-rbenv
-  specs:
-    sprout-osx-rbenv (0.1.0)
-      homebrew (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
-
-PATH
   remote: ./sprout-osx-settings
   specs:
     sprout-osx-settings (0.1.0)
@@ -73,7 +66,6 @@ DEPENDENCIES
   pivotal_workstation (>= 0)
   sprout-osx-apps (>= 0)
   sprout-osx-base (>= 0)
-  sprout-osx-rbenv (>= 0)
   sprout-osx-settings (>= 0)
   sprout-pivotal (>= 0)
   sprout-postgresql (>= 0)

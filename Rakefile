@@ -54,7 +54,6 @@ task :foodcritic do
   sh 'foodcritic sprout-osx-base      -f any -f ~FC015 -f ~FC017 -f ~FC048'
   sh 'foodcritic sprout-osx-settings  -f any -f ~FC014 -f ~FC048'
   sh 'foodcritic sprout-osx-apps      -f any -f ~FC014 -f ~FC017 -f ~FC041 -f ~FC048'
-  sh 'foodcritic sprout-osx-rbenv     -f any -f ~FC015'
   sh 'foodcritic sprout-pivotal'
   sh 'foodcritic osx                  -f any -f ~FC017'
   sh 'foodcritic pivotal_workstation  -f any -f ~FC014 -f ~FC015 -f ~FC017 -f ~FC041 -f ~FC045 -f ~FC046 -f ~FC048'
