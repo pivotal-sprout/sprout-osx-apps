@@ -7,14 +7,14 @@ SITE
 GIT
   remote: https://github.com/pivotal-sprout/sprout-base
   ref: master
-  sha: 1b46050d7134de4cec3d2125e74db92d468f360c
+  sha: 75a80d6e087698047a6a159de528e3e148b055f7
   specs:
     sprout-base (0.1.0)
 
 GIT
   remote: https://github.com/pivotal-sprout/sprout-osx-settings
   ref: master
-  sha: a6fa98039dd572c890ff310666e5bbc838fd9385
+  sha: cda4f30c9f0c463d94bac17b84e76e1a527999de
   specs:
     sprout-osx-settings (0.1.0)
       homebrew (>= 0.0.0)

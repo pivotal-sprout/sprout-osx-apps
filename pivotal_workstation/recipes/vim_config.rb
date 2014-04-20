@@ -62,4 +62,4 @@ file "#{node['sprout']['home']}/.vimrc.local" do
   not_if { File.exists?("#{node['sprout']['home']}/.vimrc.local") }
 end
 
-sprout_osx_base_bash_it_custom_plugin "vim-source_tmux_config.bash"
+sprout_base_bash_it_custom_plugin "vim-source_tmux_config.bash"

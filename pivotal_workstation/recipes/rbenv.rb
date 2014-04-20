@@ -6,7 +6,7 @@ include_recipe "pivotal_workstation::git"
 package "rbenv"
 package "ruby-build"
 
-sprout_osx_base_bash_it_enable_feature "plugins/rbenv"
+sprout_base_bash_it_enable_feature "plugins/rbenv"
 
 node["rbenv"]["rubies"].each do |version, options|
   rbenv_ruby_install version do

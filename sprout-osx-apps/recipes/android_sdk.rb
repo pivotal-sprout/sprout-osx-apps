@@ -6,7 +6,7 @@ haxm_pkg = config['haxm_package_name']
 
 package formula
 
-sprout_osx_base_bash_it_custom_plugin 'bash_it/custom/android_home.bash'
+sprout_base_bash_it_custom_plugin 'bash_it/custom/android_home.bash'
 
 execute 'update-sdk-system-tools-and-platforms' do
   command 'echo y | android update sdk --no-ui --filter build-tools-19.0.3,platform-tools,android-19,addon-google_apis-google-19,extra-android-m2repository,extra-android-support'

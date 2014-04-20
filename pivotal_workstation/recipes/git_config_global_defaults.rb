@@ -1,5 +1,5 @@
 include_recipe "pivotal_workstation::git"
-sprout_osx_base_bash_it_custom_plugin "git-export_editor.bash"
+sprout_base_bash_it_custom_plugin "git-export_editor.bash"
 
 log_msg="pivotal_workstation::git_config_global_defaults recipe will be DEPRECATED going forward. Use sprout-git::config instead!"
 log(log_msg) { level :warn }
