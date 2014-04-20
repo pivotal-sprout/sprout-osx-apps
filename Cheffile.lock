@@ -5,16 +5,6 @@ SITE
     homebrew (1.5.4)
 
 GIT
-  remote: https://github.com/pivotal-sprout/sprout-osx-rubymine
-  ref: master
-  sha: 483e49c5b1247970282938e8dafe3b13eb09e202
-  specs:
-    sprout-osx-rubymine (0.1.0)
-      homebrew (>= 0.0.0)
-      sprout-osx-apps (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
-
-GIT
   remote: https://github.com/pivotal-sprout/sprout-postgresql
   ref: master
   sha: 7fd574a7630d5fe601e8d3e4d4bc9f4dc34da934
@@ -84,7 +74,6 @@ DEPENDENCIES
   sprout-osx-apps (>= 0)
   sprout-osx-base (>= 0)
   sprout-osx-rbenv (>= 0)
-  sprout-osx-rubymine (>= 0)
   sprout-osx-settings (>= 0)
   sprout-pivotal (>= 0)
   sprout-postgresql (>= 0)
