@@ -54,13 +54,6 @@ PATH
     sprout-osx-base (0.1.0)
 
 PATH
-  remote: ./sprout-osx-git
-  specs:
-    sprout-osx-git (0.1.0)
-      homebrew (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
-
-PATH
   remote: ./sprout-osx-rbenv
   specs:
     sprout-osx-rbenv (0.1.0)
@@ -90,7 +83,6 @@ DEPENDENCIES
   pivotal_workstation (>= 0)
   sprout-osx-apps (>= 0)
   sprout-osx-base (>= 0)
-  sprout-osx-git (>= 0)
   sprout-osx-rbenv (>= 0)
   sprout-osx-rubymine (>= 0)
   sprout-osx-settings (>= 0)
