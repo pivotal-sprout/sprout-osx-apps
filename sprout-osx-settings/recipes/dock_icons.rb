@@ -1,4 +1,4 @@
-brew 'dockutil'
+package 'dockutil'
 
 apps_to_remove_from_dock = node['sprout']['apps_to_remove_from_dock']
 apps_to_remove_from_dock.each do |app|
