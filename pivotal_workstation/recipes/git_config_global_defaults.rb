@@ -14,6 +14,7 @@ end
 execute "set global git ignore" do
   command "git config --global core.excludesfile #{node['sprout']['home']}/.gitignore_global"
   user node['current_user']
+  environment ({ 'HOME' => node['sprout']['home'] })
   only_if "[ -z `git config --global core.excludesfile` ]"
 end
 
@@ -25,6 +26,7 @@ execute "make the pager prettier" do
   # * -X No scren clearing
   # * -R Raw, i.e. don't escape the control characters that produce colored output
   command %{git config --global core.pager "less -FXRS -x2"}
+  environment ({ 'HOME' => node['sprout']['home'] })
   user node['current_user']
 end
 
@@ -53,46 +55,55 @@ aliases.split("\n").each do |alias_string|
   execute "set alias #{abbrev}" do
     command "git config --global alias.#{alias_string}"
     user node['current_user']
+    environment ({ 'HOME' => node['sprout']['home'] })
     only_if "[ -z `git config --global alias.#{abbrev}` ]"
   end
 end
 
 execute "set apply whitespace=nowarn" do
   command "git config --global apply.whitespace nowarn"
+  environment ({ 'HOME' => node['sprout']['home'] })
   user node['current_user']
 end
 
 execute "set color branch=auto" do
   command "git config --global color.branch auto"
+  environment ({ 'HOME' => node['sprout']['home'] })
   user node['current_user']
 end
 
 execute "set color diff=auto" do
   command "git config --global color.diff auto"
+  environment ({ 'HOME' => node['sprout']['home'] })
   user node['current_user']
 end
 
 execute "set color interactive=auto" do
   command "git config --global color.interactive auto"
+  environment ({ 'HOME' => node['sprout']['home'] })
   user node['current_user']
 end
 
 execute "set color status=auto" do
   command "git config --global color.status auto"
+  environment ({ 'HOME' => node['sprout']['home'] })
   user node['current_user']
 end
 
 execute "set color ui=auto" do
   command "git config --global color.ui auto"
+  environment ({ 'HOME' => node['sprout']['home'] })
   user node['current_user']
 end
 
 execute "set branch autosetupmerge=true" do
   command "git config --global branch.autosetupmerge true"
+  environment ({ 'HOME' => node['sprout']['home'] })
   user node['current_user']
 end
 
 execute "set rebase autosquash=true" do
   command "git config --global rebase.autosquash true"
+  environment ({ 'HOME' => node['sprout']['home'] })
   user node['current_user']
 end
