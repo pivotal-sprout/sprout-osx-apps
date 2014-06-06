@@ -1,6 +1,6 @@
 menu_meters_uri = "http://www.ragingmenace.com/software/download/MenuMeters.dmg"
 menu_meters_dmg = Chef::Config[:file_cache_path] + "/MenuMeters.dmg"
-menu_meters_mnt = "/Volumes/MenuMeters 1.6.1"
+menu_meters_mnt = "/Volumes/MenuMeters 1.7"
 menu_meters_src = menu_meters_mnt + "/MenuMeters Installer.app/Contents/Resources/MenuMeters.prefPane"
 menu_meters_destdir = "/Library/PreferencePanes/"
 menu_meters_dst = menu_meters_destdir + "MenuMeters.prefPane"
@@ -10,7 +10,7 @@ unless File.exists?(menu_meters_dst)
   remote_file menu_meters_dmg do
     source menu_meters_uri
     mode "0644"
-    checksum "aa92266a783eb0e9782ba6701d13c3c465cbc65708b169f188f22a8c9fbd4c50"
+    checksum "e2c55e42aacb93d0c392058bde3dc35dee5bd7de1824cedacadc2874bfb08927"
   end
 
   execute "mount MenuMeters dmg" do
