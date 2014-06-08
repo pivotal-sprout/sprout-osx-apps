@@ -1,1 +1,1 @@
-sprout_osx_apps_homebrew_cask "lastpass-universal"
+homebrew_cask "lastpass-universal"

@@ -1,1 +1,1 @@
-sprout_osx_apps_homebrew_cask "vlc"
+homebrew_cask "vlc"

@@ -1,1 +1,1 @@
-sprout_osx_apps_homebrew_cask 'onepassword'
+homebrew_cask 'onepassword'

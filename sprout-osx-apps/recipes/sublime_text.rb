@@ -1,6 +1,6 @@
 include_recipe "sprout-base::user_owns_usr_local"
 
-sprout_osx_apps_homebrew_cask "sublime-text"
+homebrew_cask "sublime-text"
 
 link "/usr/local/bin/subl" do
   to "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl"

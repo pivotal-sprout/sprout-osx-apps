@@ -1,4 +1,4 @@
-sprout_osx_apps_homebrew_cask "iterm2"
+homebrew_cask "iterm2"
 
 cookbook_file "/Users/#{node['current_user']}/Library/Preferences/com.googlecode.iterm2.plist" do
   source "com.googlecode.iterm2.plist"

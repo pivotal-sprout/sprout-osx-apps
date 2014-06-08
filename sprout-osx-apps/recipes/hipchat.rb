@@ -1,7 +1,7 @@
 app = node['sprout']['hipchat']['app']
 app_plist = "#{node['sprout']['home']}/Library/Preferences/com.hipchat.HipChat.plist"
 
-sprout_osx_apps_homebrew_cask "hipchat"
+homebrew_cask "hipchat"
 
 execute "open /Applications/#{app}; osascript -e 'tell application \"#{app}\" to quit'" do
   not_if { ::File.exists?(app_plist) }
