@@ -52,6 +52,4 @@ end
 
 task :foodcritic do
   sh 'foodcritic sprout-osx-apps      -f any -f ~FC014 -f ~FC017 -f ~FC041 -f ~FC048'
-  sh 'foodcritic sprout-pivotal'
-  sh 'foodcritic pivotal_workstation  -f any -f ~FC014 -f ~FC015 -f ~FC017 -f ~FC041 -f ~FC045 -f ~FC046 -f ~FC048'
 end
