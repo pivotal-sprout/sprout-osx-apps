@@ -2,19 +2,26 @@ SITE
   remote: http://community.opscode.com/api/v1
   specs:
     dmg (2.0.4)
-    homebrew (1.5.4)
+    homebrew (1.6.6)
+
+GIT
+  remote: https://github.com/pivotal-sprout/osx
+  ref: master
+  sha: 5d7deecd6a928db62a7061907c790b3e07f47e22
+  specs:
+    osx (0.1.0)
 
 GIT
   remote: https://github.com/pivotal-sprout/sprout-base
   ref: master
-  sha: 75a80d6e087698047a6a159de528e3e148b055f7
+  sha: e2649562c9ca53944d80380b1d95beb9c61df60e
   specs:
     sprout-base (0.1.0)
 
 GIT
   remote: https://github.com/pivotal-sprout/sprout-osx-settings
   ref: master
-  sha: cda4f30c9f0c463d94bac17b84e76e1a527999de
+  sha: a22da410f059793abd7402e950613f5fbbd58cea
   specs:
     sprout-osx-settings (0.1.0)
       homebrew (>= 0.0.0)
@@ -24,16 +31,11 @@ GIT
 GIT
   remote: https://github.com/pivotal-sprout/sprout-postgresql
   ref: master
-  sha: 9abc130c573fd41bb51ec7959fc89678b2c8da46
+  sha: 6b3759b6aa382337dba579cacf9d825d80795e49
   specs:
     sprout-postgresql (0.1.0)
-      homebrew (~> 1.5.4)
+      homebrew (>= 1.5.4)
       sprout-base (>= 0.0.0)
-
-PATH
-  remote: ./osx
-  specs:
-    osx (0.1.0)
 
 PATH
   remote: ./pivotal_workstation
@@ -53,7 +55,7 @@ PATH
   specs:
     sprout-osx-apps (0.1.0)
       dmg (>= 0.0.0)
-      homebrew (>= 0.0.0)
+      homebrew (>= 1.6.6)
       sprout-base (>= 0.0.0)
       sprout-osx-settings (>= 0.0.0)
 
