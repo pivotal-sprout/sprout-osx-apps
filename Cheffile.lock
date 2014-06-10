@@ -28,15 +28,6 @@ GIT
       osx (>= 0.0.0)
       sprout-base (>= 0.0.0)
 
-GIT
-  remote: https://github.com/pivotal-sprout/sprout-postgresql
-  ref: master
-  sha: 6b3759b6aa382337dba579cacf9d825d80795e49
-  specs:
-    sprout-postgresql (0.1.0)
-      homebrew (>= 1.5.4)
-      sprout-base (>= 0.0.0)
-
 PATH
   remote: ./sprout-osx-apps
   specs:
@@ -53,5 +44,4 @@ DEPENDENCIES
   sprout-base (>= 0)
   sprout-osx-apps (>= 0)
   sprout-osx-settings (>= 0)
-  sprout-postgresql (>= 0)
 
