@@ -29,7 +29,7 @@ GIT
       sprout-base (>= 0.0.0)
 
 PATH
-  remote: ./sprout-osx-apps
+  remote: .
   specs:
     sprout-osx-apps (0.1.0)
       dmg (>= 0.0.0)

@@ -3,7 +3,7 @@ site 'http://community.opscode.com/api/v1'
 cookbook 'dmg', '2.0.4'
 cookbook 'homebrew'
 
-cookbook 'sprout-osx-apps', :path => './sprout-osx-apps'
+cookbook 'sprout-osx-apps', :path => '.'
 cookbook 'osx', :github => 'pivotal-sprout/osx'
 cookbook 'sprout-base', :github => 'pivotal-sprout/sprout-base'
 cookbook 'sprout-osx-settings', :github => 'pivotal-sprout/sprout-osx-settings'
