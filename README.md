@@ -1,6 +1,8 @@
 sprout-osx-apps
 ===============
 
+[![Build Status](https://travis-ci.org/pivotal-sprout/sprout-osx-apps.svg?branch=master)](https://travis-ci.org/pivotal-sprout/sprout-osx-apps)
+
 Recipes to install commonly used applications on OS X
 
 ### WARNING
