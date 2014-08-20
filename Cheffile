@@ -1,4 +1,4 @@
-site 'http://community.opscode.com/api/v1'
+site 'https://supermarket.getchef.com/api/v1'
 
 cookbook 'dmg', '2.0.4'
 cookbook 'homebrew'
