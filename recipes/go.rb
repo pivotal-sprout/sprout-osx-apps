@@ -12,5 +12,5 @@ end
 
 execute '/usr/local/bin/go get golang.org/x/tools/cmd/godoc' do
   environment('GOPATH' => File.join(node['sprout']['home'], 'go'))
-  user node['current_user']
+  user node['sprout']['user']
 end

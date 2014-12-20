@@ -8,5 +8,5 @@ dmg_package 'Firefox Aurora' do
   source config['source']
   checksum config['checksum']
   action :install
-  owner node['current_user']
+  owner node['sprout']['user']
 end

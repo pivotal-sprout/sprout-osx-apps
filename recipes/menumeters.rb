@@ -25,20 +25,20 @@ unless File.exists?(menu_meters_dst)
         plist_handle.puts Plist::Emit.dump(ui_plist)
       end
     end
-    # long path because this command runs as root, and we're in node['current_user']'s preferences, not root's
-    not_if "defaults read ~#{node['current_user']}/Library/Preferences/com.apple.systemuiserver menuExtras | grep 'MenuMeters.prefPane'"
+    # long path because this command runs as root, and we're in node['sprout']['user']'s preferences, not root's
+    not_if "defaults read ~#{node['sprout']['user']}/Library/Preferences/com.apple.systemuiserver menuExtras | grep 'MenuMeters.prefPane'"
   end
 
   # My preferences: more history graphs.  Delete this stanza if you want to go with the defaults.
   plist_path = File.expand_path('com.ragingmenace.MenuMeters.plist', File.join(node['sprout']['home'], 'Library', 'Preferences'))
   template plist_path do
     source "com.ragingmenace.MenuMeters.plist.erb"
-    owner node['current_user']
+    owner node['sprout']['user']
   end
 
   execute "Restart SystemUIServer" do
     command 'killall -HUP SystemUIServer'
-    user node['current_user']
+    user node['sprout']['user']
     ignore_failure true # SystemUIServer is not running if not logged in
   end
 

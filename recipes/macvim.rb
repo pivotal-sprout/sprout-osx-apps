@@ -10,7 +10,7 @@ archive_path = "#{Chef::Config[:file_cache_path]}/#{archive_name}"
 remote_file archive_path do
   source source
   checksum checksum
-  owner node['current_user']
+  owner node['sprout']['user']
 end
 
 execute "extract #{archive_path}" do
@@ -20,7 +20,7 @@ end
 
 execute "place #{app} in /Applications" do
   command "cp -R #{Chef::Config[:file_cache_path]}/#{extracted}/#{app} /Applications/"
-  user node['current_user']
+  user node['sprout']['user']
   group "admin"
   not_if "test -e /Applications/#{app}"
 end

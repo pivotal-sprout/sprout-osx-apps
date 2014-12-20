@@ -1,4 +1,4 @@
-user = node['current_user']
+user = node['sprout']['user']
 
 config = node['android_sdk']
 formula = config['formula']

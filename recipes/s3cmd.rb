@@ -1,7 +1,7 @@
 
 template "#{node['sprout']['home']}/.s3cfg" do
-  owner node['current_user']
-  group node['etc']['passwd'][node['current_user']]['gid']
+  owner node['sprout']['user']
+  group node['etc']['passwd'][node['sprout']['user']]['gid']
   mode '0600'
   source 's3cfg.erb'
   variables(

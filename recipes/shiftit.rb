@@ -10,13 +10,13 @@ unless File.exists?(app_path)
 
   execute 'unzip ShiftIt' do
     command "unzip #{Chef::Config[:file_cache_path]}/ShiftIt.zip ShiftIt.app/* -d /Applications/"
-    user node['current_user']
+    user node['sprout']['user']
     group 'admin'
   end
 
   # start up on login
   execute('Start ShiftIt on login') do
-    command "su #{node['current_user']} -c \"addloginitem #{app_path}\""
+    command "su #{node['sprout']['user']} -c \"addloginitem #{app_path}\""
   end
 
   ruby_block 'Allow ShiftIt to control your computer' do

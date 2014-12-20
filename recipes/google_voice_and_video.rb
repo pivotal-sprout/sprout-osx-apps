@@ -7,5 +7,5 @@ dmg_package 'Google Voice and Video' do
   package_id dmg_properties['package_id']
   volumes_dir dmg_properties['volumes_dir']
   action :install
-  owner node['current_user']
+  owner node['sprout']['user']
 end

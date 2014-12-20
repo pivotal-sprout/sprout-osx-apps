@@ -11,10 +11,10 @@ directory '/opt/homebrew-cask/Caskroom' do
   action :create
   recursive true
   mode '0755'
-  owner node['current_user']
+  owner node['sprout']['user']
   group 'staff'
 end
 
 directory '/opt/homebrew-cask' do
-  owner node['current_user']
+  owner node['sprout']['user']
 end
