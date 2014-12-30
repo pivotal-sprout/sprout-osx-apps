@@ -1,1 +1,1 @@
-homebrew_cask "gitx-rowanj"
+homebrew_cask "rowanj-gitx"
