@@ -1,6 +1,6 @@
 name             'sprout-osx-apps'
 maintainer       'Pivotal Labs'
-maintainer_email 'accounts@pivotallabs.com'
+maintainer_email 'sprout-maintainers@googlegroups.com'
 license          'MIT'
 description      'Installs/Configures sprout-osx-apps'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
