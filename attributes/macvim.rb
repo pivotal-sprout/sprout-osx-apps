@@ -1,5 +1,0 @@
-default["sprout"]["macvim"]["source"]    = "https://github.com/b4winckler/macvim/releases/download/snapshot-72/MacVim-snapshot-72-Mavericks.tbz"
-default["sprout"]["macvim"]["checksum"]  = "f2543860b27b7c0db9407d9d38d4c2fb5cda5b23845a6c121936116ccf8b0d39"
-default["sprout"]["macvim"]["extracted"] = "MacVim-snapshot-72"
-default["sprout"]["macvim"]["app"]       = "MacVim.app"
-default["sprout"]["macvim"]["bin"]       = "mvim"
