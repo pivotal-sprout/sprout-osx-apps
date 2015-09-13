@@ -1,1 +1,0 @@
-homebrew_cask "spotify"

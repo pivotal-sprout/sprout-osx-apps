@@ -1,4 +1,4 @@
-include_recipe 'sprout-osx-apps::vagrant'
+homebrew_cask 'vagrant'
 
 node['sprout']['vagrant']['plugins'].each do |plugin|
   options = ''

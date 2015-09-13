@@ -1,1 +1,0 @@
-homebrew_cask 'sequel-pro'
