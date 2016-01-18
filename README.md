@@ -7,7 +7,20 @@ Roadmap in Pivotal Tracker: https://www.pivotaltracker.com/s/projects/884116
 Chef cookbooks to configure an OS X Mavericks workstation. The easiest way 
 to get started with sprout is by using [sprout-wrap](https://github.com/pivotal-sprout/sprout-wrap).
 
-For the last version known to work on OS X Mountain Lion, see the [mountain-lion](https://github.com/pivotal-sprout/sprout/tree/mountain-lion) branch.
+## Homebrew env ##
+In case `soloist` command fails, re-run command in debug mode
+```
+LOG_LEVEL=debug bundle exec soloist
+```
+
+You will need to setup Homebew env variables
+
+```
+export HOMEBREW_PREFIX=/usr/local
+export HOMEBREW_REPOSITORY=/usr/local
+export HOMEBREW_LIBRARY=/usr/local/Library
+export HOMEBREW_CELLAR=/usr/local/Cellar
+```
 
 ## Discussion List
 
